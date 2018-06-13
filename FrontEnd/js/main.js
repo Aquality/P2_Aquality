@@ -72,7 +72,7 @@ addProduct(productname, count)
 deleteProduct(productname, count)
 
     Reduziert den >> count << Faktor eines product-Objektes um die angegebene Zahl (im Backend).
-    Falls sich der >> count << Faktor eines product-Objektes auf 1 befindet, wird es aus dem products array (im Backend) gelöscht.
+    Falls sich der >> count << Faktor eines product-Objektes auf 1 befindet, wird es aus dem Einkaufswagen (im Backend) gelöscht.
 
     zB. deleteProduct("Tomate", 2);
         --> löscht 2 Tomaten aus dem Einkaufswagen
