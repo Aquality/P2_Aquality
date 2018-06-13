@@ -1,56 +1,98 @@
-//=== Backend Variables ===
-
-totalWater;
-purchasedProducts = [];
-
-//=== WebSocket Variables ===
-
-socket = null;
-uri = "ws://localhost:8765";
-
-
-//=== WebSocket Funktionen ===
-
-function sendToBackend(message) {
-    socket = new WebSocket(uri);
-    socket.onopen = function (e) { console.log("opened " + uri);
-        webSocketSend(message);
-    };
-    socket.onclose = function (e) { console.log("closed"); socket = null;};
-    socket.onmessage = function (e) { console.log("Server: " + e.data); };
-    socket.onerror = function (e) { if (e.data) console.log("Error: " + e.data); };
-}
-
-
-function webSocketSend(message) {
-    if (socket == null) {
-        console.log("socket is not connected");
-        return;
-    }
-    socket.send(message);
-}
-
-function webSocketDisconnect() {
-    socket.close();
-}
-
+var totalWater = 0;
+var products = [];
 
 //=== FrontEnd Funktionen ===
 
-function getBackendVariables() {
-    if(socket.readyState === socket.CLOSED) {
-        sendToBackend("getBackendVariables");
+function getActualProduct() {
+    return actualProduct;
+}
+
+function resetActualProduct() {
+    actualProduct = "nothing";
+}
+
+function getTotalWater() {
+    totalWater = calculateWater();
+}
+
+function getProducts() {
+    products = [];
+    for(var i = 0; i < backendProducts.length; i++) {
+        products[i] = backendProducts[i];
     }
 }
 
-function addProduct(productname) {
-    sendToBackend("add " + productname);
+function addProduct(productname, count) {
+    for(var i = 0; i <= backendProducts.length; i++) {
+        
+        if (i == backendProducts.length){
+            backendProducts.push(new Product(productname, count, 150));
+            break;
+        } else if(productname == backendProducts[i].name) {
+            backendProducts[i].count += count;
+            break;
+        }
+
+    }
 }
 
-function deleteProduct(productname) {
-    sendToBackend("delete " + productname);
+function deleteProduct(productname, count) {
+    for(var i = 0; i <= backendProducts.length; i++) {
+
+        if(productname == backendProducts[i].name) {
+            backendProducts[i].count -= count;
+            if(backendProducts[i].count <= 0) {
+                backendProducts.splice(i, 1);
+            } 
+            return;
+        }
+
+    console.log("Mehr Produkte entfernt, als im Einkaufswagen vorhanden!");
+
+    }
 }
 
 function printBill() {
-    sendToBackend("print");
+    console.log("DRUCKE RECHNUNG");
+}
+
+function resetBackend() {
+    backendProducts = null;
+    backendProducts = [];
+    console.log("BACKEND RESETTET");
+}
+
+//=== Funktionen, damit der Platzhalter Funktioniert ===
+
+function scanProduct() {
+
+    if(actualProduct != "Tomate") {
+        actualProduct = "Tomate";
+        console.log("TOMATE EINGESCANNT");
+        for(var i = 0; i <= backendProducts.length; i++) {
+
+            if(i == backendProducts.length) {
+                backendProducts.push(new Product("Tomate", 4, 150));
+                break;
+            } else if(backendProducts[i].name == "Tomate") {
+                break;
+            }
+        }
+    }
+}
+
+function calculateWater() {
+    water = 0;
+    for(i = 0; i < backendProducts.length; i++) {
+        water = water + backendProducts[i].water * backendProducts[i].count;
+    }
+    return water;
+}
+
+class Product {
+    constructor(name, count, water) {
+        this.name = name;
+        this.count = count;
+        this.water = water;
+    }
 }
