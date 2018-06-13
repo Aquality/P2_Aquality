@@ -1,7 +1,12 @@
-totalWater;
-purchasedProducts;
+var totalWater = 0;
+var products = [];
+var actualProduct;
 
 //=== FrontEnd Funktionen ===
+
+function getActualProduct() {
+
+}
 
 function getBackendVariables() {
     
@@ -17,10 +22,4 @@ function deleteProduct(productname) {
 
 function printBill() {
     
-}
-
-function checkScanner() {
-    if() {
-        
-    }
 }
