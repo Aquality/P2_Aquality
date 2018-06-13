@@ -54,7 +54,3 @@ function deleteProduct(productname) {
 function printBill() {
     sendToBackend("print");
 }
-
-function checkScanner() {
-    if()
-}
