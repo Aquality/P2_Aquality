@@ -1,20 +1,21 @@
 var totalWater = 0;
 var products = [];
-
+var actualProduct;
 
 //Platzhalter Variablen
+var backendActualProduct = "nothing";
 var water;
 var backendProducts = [];
-var actualProduct = "nothing";
+
 
 //=== FrontEnd Funktionen ===
 
 function getActualProduct() {
-    return actualProduct;
+    actualProduct = backendActualProduct;
 }
 
-function resetActualProduct() {
-    actualProduct = "nothing";
+function resetbackendActualProduct() {
+    backendActualProduct = "nothing";
 }
 
 function getTotalWater() {
@@ -72,8 +73,8 @@ function resetBackend() {
 
 function scanProduct() {
 
-    if(actualProduct != "Tomate") {
-        actualProduct = "Tomate";
+    if(backendActualProduct != "Tomate") {
+        backendActualProduct = "Tomate";
         console.log("TOMATE EINGESCANNT");
         for(var i = 0; i <= backendProducts.length; i++) {
 

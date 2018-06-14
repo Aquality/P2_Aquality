@@ -6,7 +6,8 @@
 Variablen:
 
 var totalWater;
-var products = []
+var products = [];
+actualProduct;
 
 
 Funktionen:
@@ -14,7 +15,7 @@ Funktionen:
 --------------------------------------------------------------
 getActualProduct()
 
-    Gibt den Namen des Produktes zurück, welches als letztes vom User eingescannt wurde
+    aktualisiert die Variable >> actualProduct <<, welche angibt, welches Produkt als letztes vom user eingescannt wurde
     zB. "Tomate"
 --------------------------------------------------------------
 
@@ -128,7 +129,7 @@ function setup() {
 }
 
 function draw() {
-    background(100);
+
 }
 
 function keyPressed() {
