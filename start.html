@@ -1,0 +1,69 @@
+<head>
+    <title>AQUALITY</title>
+    <meta charset="UTF-8" />
+    <script src="p5.min.js"></script>
+    <script src="p5setup.js"></script>
+    <script src="prototyp.js"></script>
+    <script src="prototypAnimation.js"></script>
+    <link href="frontend.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+    </style>
+
+</head>
+
+<body style="background-color:rgba(255,255,255,0.60)">
+
+    <div id="start-screen" style="height:100vh; width:100vw;">
+
+        <div id="logo" class="lightblue" style=" height:260px; text-align:center; margin-top:10vh;">
+            <img src="aquality_logo_col.png" alt="logo" style="width:60vw;margin-top: 2vh;">
+        </div>
+
+        <div id="animation" style="width:99vw; height: 40vh;margin-top:10vh; text-align: center">
+            <!--Animation der Funktionsweise-->
+            <img src="..." alt="animation (einfügen)">
+        </div>
+
+    </div>
+
+    <!--sobald der erste Artikel gescannt wird, wird zum scan-screen gescrollts 'function getActualProduct(){}'-->
+    <div id="scan-screen" style="width:100vw; height: 90vh; text-align: center; background-color: rgb(255,255,255)">
+        <h1 class="lightblue" style="color: rgb(99,99,99) ;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:normal; padding: 4%;font-size:35px;">Wählen Sie die Menge des gescannten Produktes</h1>
+
+        <div class "grid-container" style="grid-template-columns: auto auto auto; display:grid; align-content:center;">
+
+            <!--minus-button 'function deleteProduct(productname){}'-->
+            <div style="text-align:right;">
+                <br style="font-size:100px;">
+                <button id="minus-button" type="button" class="btn btn" style="border-radius:50%; width:6vw; height:6vw; background-color: rgba(148, 211, 66);font-size:40px;">
+                    <b>-</b>
+                </button>
+            </div>
+            <!--Produkt-Ansicht 'function getBackendVariables(){}'-->
+            <div>
+                <p id="product" value="" style="font-size:20vw">🍅</p>
+            </div>
+            <!--plus-button 'function addProduct(productname){}'-->
+            <div style="text-align:left;">
+                <br style="font-size:100px;">
+                <button id="plus-button" type="button" class="btn btn" style="border-radius:50%; width:6vw; height:6vw; background-color: rgba(255, 61, 59); font-size:40px;">
+                    <b>+</b>
+                </button>
+            </div>
+        </div>
+
+        <!--Warenkorb-->
+
+    </div>
+    <!--Zur Kasse-button (evtl. pulsierend)-->
+    <div id "kasse-button">
+        <a href="ergebnis.html">
+            <button type="button" onclick="" class="btn btn-block lightblue" style="padding:1%;background-color: rgba(4, 204, 204,0.1); color: rgb(99,99,99) ; font-size:20px;">Zur Kasse</button>
+        </a>
+    </div>
+    <!--sobald alles eingescannt wurde, wird zum ergebnis-screen gewechselt und 'function printBill(){}'-->
+</body>
