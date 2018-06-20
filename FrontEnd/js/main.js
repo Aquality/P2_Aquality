@@ -128,7 +128,7 @@ Dabei erhält es den jeweiligen Count, welcher in der Datenbak als startCount de
 var productCounter = 0;
 
 function setup() {
-    frameRate(30);
+    frameRate(2);
 }
 
 function draw() {
@@ -192,14 +192,14 @@ function addSC() {
     } else {
         deleteProduct(actualProduct, productCounter);
     }
-    resetbackendActualProduct();
+    resetBackendActualProduct();
     unlockScann();
     productCounter = 0;
     document.getElementById("productCounter").innerHTML = productCounter;
 }
 
 function cancel() {
-    resetbackendActualProduct();
+    resetBackendActualProduct();
     document.getElementById("productCounter").innerHTML = productCounter;
 }
 

@@ -1,98 +1,122 @@
-var totalWater = 0;
-var products = [];
+var uri = "ws://localhost:8765";
 
-//=== FrontEnd Funktionen ===
+//== WebSocket Initialisierung ==
 
-function getActualProduct() {
-    return actualProduct;
+var socket = new WebSocket(uri);
+
+socket.onopen = function (event) {
+    console.log("WebSocket opened");
+}
+socket.onclose = function (event) {
+    console.log("WebSocket closed")
+    socket = null;
+}
+socket.onmessage = function (event) {
+    webSocketReceiveHandler(event);
 }
 
-function resetActualProduct() {
-    actualProduct = "nothing";
+//== FRONTEND VARIABLES ===
+var products = [];
+var totalWater = 0;
+var actualProduct = "nothing";
+var locked = false;
+
+//=== FRONTEND FUNKTIONEN ===
+
+function unlockScann() {
+    socket.send("unlockScann");
+}
+
+function getActualProduct() {
+    socket.send("getActualProduct");
+}
+
+function resetBackendActualProduct() {
+    socket.send("resetBackendActualProduct");
 }
 
 function getTotalWater() {
-    totalWater = calculateWater();
+    socket.send("getTotalWater");
 }
 
 function getProducts() {
-    products = [];
-    for(var i = 0; i < backendProducts.length; i++) {
-        products[i] = backendProducts[i];
-    }
+    socket.send("getProducts");
 }
 
 function addProduct(productname, count) {
-    for(var i = 0; i <= backendProducts.length; i++) {
-        
-        if (i == backendProducts.length){
-            backendProducts.push(new Product(productname, count, 150));
-            break;
-        } else if(productname == backendProducts[i].name) {
-            backendProducts[i].count += count;
-            break;
-        }
-
-    }
+    socket.send("add " + productname + " " + count);
 }
 
 function deleteProduct(productname, count) {
-    for(var i = 0; i <= backendProducts.length; i++) {
-
-        if(productname == backendProducts[i].name) {
-            backendProducts[i].count -= count;
-            if(backendProducts[i].count <= 0) {
-                backendProducts.splice(i, 1);
-            } 
-            return;
-        }
-
-    console.log("Mehr Produkte entfernt, als im Einkaufswagen vorhanden!");
-
-    }
+    socket.send("delete " + productname + " " + count);
 }
 
 function printBill() {
-    console.log("DRUCKE RECHNUNG");
+    socket.send("printBill");
 }
 
 function resetBackend() {
-    backendProducts = null;
-    backendProducts = [];
-    console.log("BACKEND RESETTET");
+    socket.send("resetBackend");
 }
 
-//=== Funktionen, damit der Platzhalter Funktioniert ===
+//=== WebSocket Funktionen ===
 
-function scanProduct() {
+function webSocketReceiveHandler(event) {
+    try {
+        var jsonProducts = [];
 
-    if(actualProduct != "Tomate") {
-        actualProduct = "Tomate";
-        console.log("TOMATE EINGESCANNT");
-        for(var i = 0; i <= backendProducts.length; i++) {
-
-            if(i == backendProducts.length) {
-                backendProducts.push(new Product("Tomate", 4, 150));
-                break;
-            } else if(backendProducts[i].name == "Tomate") {
-                break;
+        if(typeof JSON.parse(event.data) == "object") {
+            jsonProducts = JSON.parse(event.data);
+            for(var i = 0; i < jsonProducts.length; i++) {
+                products[i] = JSON.parse(jsonProducts[i]);
             }
         }
+
     }
+
+    catch(err) {
+
+    }
+
+    try {
+        if(typeof JSON.parse(event.data) == 'number') {
+        totalWater = JSON.parse(event.data);
+        }
+    }
+
+    catch(err) {
+
+    }
+
+    try {
+        if(typeof JSON.parse(event.data) == "string") {
+            if(JSON.parse(event.data) == "locked") {
+                locked = true;
+            } else if(JSON.parse(event.data) == "unlocked") {
+                locked = false;
+            } else {
+                actualProduct = JSON.parse(event.data);
+            }
+
+        }
+    }
+
+    catch(err) {
+
+    }
+    
 }
 
-function calculateWater() {
-    water = 0;
-    for(i = 0; i < backendProducts.length; i++) {
-        water = water + backendProducts[i].water * backendProducts[i].count;
-    }
-    return water;
+//------------------------------------------------------------------------------------
+
+/* function setup() {
+    createCanvas(500, 500);
+    frameRate(2);
 }
 
-class Product {
-    constructor(name, count, water) {
-        this.name = name;
-        this.count = count;
-        this.water = water;
-    }
+function draw() {
+if(socket.readyState === socket.OPEN) {
+    getProducts();
 }
+} */
+
