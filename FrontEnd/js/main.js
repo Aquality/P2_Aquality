@@ -124,20 +124,58 @@ Dabei erhält es den jeweiligen Count, welcher in der Datenbak als startCount de
 
 
 function setup() {
-    createCanvas(window.innerWidth, window.innerHeight);
     frameRate(30);
 }
 
 function draw() {
-
+    //sobald das erste Produkt eingescanntw wird, wird zum Scan-Screen gewechselt
+    getActualProduct();
+    getProducts();
+    imgChanger(actualProduct);
+    if (actualProduct != "nothing") {
+        location.hash = "#scan-screen";
+       
+    }
 }
 
 function keyPressed() {
-
     //scannt Tomate Ein
-    if(keyCode == 84) {
+    if (keyCode == 84) {
         scanProduct();
     }
 }
+
+function imgChanger(product) {
+    //aktualisiert die Produktanzeige
+    document.getElementById("product").src = product + ".png";
+}
+
+function addButton() {
+    //Fügt der Produktmenge +1 des jeweiligen Produktes hinzu 
+    getProducts();
+    addProduct(actualProduct, 1);
+    console.log(products[0]);
+}
+
+function deleteButton() {
+    //Entfernt aus der Produktmenge -1 des jeweiligen Produktes 
+    getProducts();
+    deleteProduct(actualProduct, 1);
+    //nur solange die Produktmenge über 0 ist
+    for(var i=0; i < products.length; i++) {
+        if(products[i].name == actualProduct && products[i].count <= 0) {
+            resetbackendActualProduct();
+        }
+    }
+    //console.log(products[0]);
+}
+
+function addSC() {
+    //aktualisiert die Produktdaten nach Eingabe und Bestätigung der Menge
+    resetbackendActualProduct();
+}
+
+
+
 
 

@@ -3,18 +3,18 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="p5/p5.min.js"></script>
     <script src="jsBackend/backend_platzhalter.js"></script>
     <script src="js/main.js"></script>
     <title>AQUALITY</title>
+    <!-- test -->
     <meta charset="UTF-8" />
-    <script src="p5.min.js"></script>
-    <script src="p5setup.js"></script>
     <link href="frontend.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <style>
     </style>
  
@@ -44,30 +44,37 @@
             <!--minus-button 'function deleteProduct(productname){}'-->
             <div style="text-align:right;">
                 <br style="font-size:100px;">
-                <button id="minus-button" type="button" class="btn btn" style="border-radius:50%; width:6vw; height:6vw; background-color: rgba(148, 211, 66);font-size:40px;">
+                <button id="minus-button" onclick="deleteButton()" type="button" class="btn btn" style="border-radius:50%; width:6vw; height:6vw; background-color: rgba(148, 211, 66);font-size:40px;">
                     <b>-</b>
                 </button>
             </div>
+
             <!--Produkt-Ansicht 'function getBackendVariables(){}'-->
             <div>
-                <p id="product" value="" style="font-size:20vw">🍅</p>
+                <img id="product" src="" alt="">
             </div>
+
             <!--plus-button 'function addProduct(productname){}'-->
             <div style="text-align:left;">
                 <br style="font-size:100px;">
-                <button id="plus-button" type="button" class="btn btn" style="border-radius:50%; width:6vw; height:6vw; background-color: rgba(255, 61, 59); font-size:40px;">
+                <button id="plus-button" onclick="addButton()" type="button" class="btn btn" style="border-radius:50%; width:6vw; height:6vw; background-color: rgba(255, 61, 59); font-size:40px;">
                     <b>+</b>
                 </button>
             </div>
         </div>
+        <div>
+            <button id="addToShoppingCart" onclick="addSC()" type="button" class="btn btn" style="border-radius:50%; width:6vw; height:6vw; background-color: rgb(50, 214, 18); font-size:40px;"></button>
+        </div>
 
+
+        <!--Zum Warenkorb hinzufügen button-->
         <!--Warenkorb-->
 
     </div>
     <!--Zur Kasse-button (evtl. pulsierend)-->
     <div id "kasse-button">
-        <a href="ergebnis.html">
-            <button type="button" onclick="" class="btn btn-block lightblue" style="padding:1%;background-color: rgba(4, 204, 204,0.1); color: rgb(99,99,99) ; font-size:20px;">Zur Kasse</button>
+        <a href="#ergebnis.html">
+            <button type="button" onclick="printBill()" class="btn btn-block lightblue" style="padding:1%;background-color: rgba(4, 204, 204,0.1); color: rgb(99,99,99) ; font-size:20px;">Zur Kasse</button>
         </a>
     </div>
     <!--sobald alles eingescannt wurde, wird zum ergebnis-screen gewechselt und 'function printBill(){}'-->
