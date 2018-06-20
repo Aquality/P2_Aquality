@@ -124,7 +124,6 @@ Dabei erhält es den jeweiligen Count, welcher in der Datenbak als startCount de
 
 
 function setup() {
-    createCanvas(window.innerWidth, window.innerHeight);
     frameRate(30);
 }
 
@@ -139,5 +138,3 @@ function keyPressed() {
         scanProduct();
     }
 }
-
-
