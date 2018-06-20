@@ -6,9 +6,15 @@ var actualProduct;
 var backendActualProduct = "nothing";
 var water;
 var backendProducts = [];
-
+var locked = false;
 
 //=== FrontEnd Funktionen ===
+
+
+function unlockScann() {
+    console.log("Scanning is now unlocked");
+    locked = false;
+}
 
 function getActualProduct() {
     actualProduct = backendActualProduct;
@@ -16,6 +22,7 @@ function getActualProduct() {
 
 function resetbackendActualProduct() {
     backendActualProduct = "nothing";
+    locked = false;
 }
 
 function getTotalWater() {
@@ -33,7 +40,7 @@ function addProduct(productname, count) {
     for(var i = 0; i <= backendProducts.length; i++) {
         
         if (i == backendProducts.length){
-            backendProducts.push(new Product(productname, count, 150));
+            backendProducts.push(new Product(productname, count, 150, 4));
             break;
         } else if(productname == backendProducts[i].name) {
             backendProducts[i].count += count;
@@ -66,20 +73,28 @@ function printBill() {
 function resetBackend() {
     backendProducts = null;
     backendProducts = [];
+    locked = false;
     console.log("BACKEND RESETTET");
 }
 
 //=== Funktionen, damit der Platzhalter Funktioniert ===
 
+
+function lockScann() {
+    console.log("Scanning is now locked");
+    locked = true;
+}
+
 function scanProduct() {
 
-    if(backendActualProduct != "Tomate") {
+    if(backendActualProduct != "Tomate" && locked == false) {
+        lockScann();
         backendActualProduct = "Tomate";
         console.log("TOMATE EINGESCANNT");
         for(var i = 0; i <= backendProducts.length; i++) {
 
             if(i == backendProducts.length) {
-                backendProducts.push(new Product("Tomate", 4, 150));
+                backendProducts.push(new Product("Tomate", 4, 150, 4));
                 break;
             } else if(backendProducts[i].name == "Tomate") {
                 break;
@@ -97,9 +112,10 @@ function calculateWater() {
 }
 
 class Product {
-    constructor(name, count, water) {
+    constructor(name, count, water, startCount) {
         this.name = name;
         this.count = count;
         this.water = water;
+        this.startCount = startCount;
     }
 }
