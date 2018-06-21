@@ -50,6 +50,7 @@ getProducts()
         name    -->     name des Produktes zB. "Tomate"
         count   -->     gibt an, wie viele Produkte des jeweiligen Typs im Einkaufswagen liegen
         water   -->     gibt an wie viel Wasser im jeweiligen Produkt enthalten ist
+        startCount --> gibt an, mit wie vieln einheiten gestartet werden soll
 ---------------------------------------------------------------
 
 
@@ -122,9 +123,12 @@ Dabei erhält es den jeweiligen Count, welcher in der Datenbak als startCount de
 //==========================================================================================================================
 //==========================================================================================================================
 
+//=== Variablen ===
+
+var productCounter = 0;
 
 function setup() {
-    frameRate(30);
+    frameRate(2);
 }
 
 function draw() {
@@ -133,8 +137,15 @@ function draw() {
     getProducts();
     imgChanger(actualProduct);
     if (actualProduct != "nothing") {
+        document.getElementById("productCounter").style.display = "block";
         location.hash = "#scan-screen";
-       
+        for(var i = 0; i < products.length; i++) {
+            if(products[i].name == actualProduct) {
+                document.getElementById("productCounter").innerHTML = products[i].startCount + productCounter;
+            }
+        }
+    } else {
+        document.getElementById("productCounter").style.display = "none";
     }
 }
 
@@ -142,6 +153,8 @@ function keyPressed() {
     //scannt Tomate Ein
     if (keyCode == 84) {
         scanProduct();
+    } else if (keyCode == 82) {
+        console.log(products);
     }
 }
 
@@ -152,19 +165,20 @@ function imgChanger(product) {
 
 function addButton() {
     //Fügt der Produktmenge +1 des jeweiligen Produktes hinzu 
-    getProducts();
-    addProduct(actualProduct, 1);
-    console.log(products[0]);
+    productCounter++;
+    console.log(productCounter);
 }
 
 function deleteButton() {
-    //Entfernt aus der Produktmenge -1 des jeweiligen Produktes 
-    getProducts();
-    deleteProduct(actualProduct, 1);
+    //Entfernt aus der Produktmenge -1 des jeweiligen Produktes
+
     //nur solange die Produktmenge über 0 ist
+    
     for(var i=0; i < products.length; i++) {
-        if(products[i].name == actualProduct && products[i].count <= 0) {
-            resetbackendActualProduct();
+        if(products[i].name == actualProduct && products[i].count + productCounter <= 1) {
+            cancel();
+        } else {
+            productCounter--;
         }
     }
     //console.log(products[0]);
@@ -172,7 +186,21 @@ function deleteButton() {
 
 function addSC() {
     //aktualisiert die Produktdaten nach Eingabe und Bestätigung der Menge
-    resetbackendActualProduct();
+
+    if(productCounter > 0) {
+        addProduct(actualProduct, productCounter);
+    } else {
+        deleteProduct(actualProduct, productCounter);
+    }
+    resetBackendActualProduct();
+    unlockScann();
+    productCounter = 0;
+    document.getElementById("productCounter").innerHTML = productCounter;
+}
+
+function cancel() {
+    resetBackendActualProduct();
+    document.getElementById("productCounter").innerHTML = productCounter;
 }
 
 
