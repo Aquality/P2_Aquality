@@ -132,7 +132,7 @@ function setup() {
 }
 
 function draw() {
-    //sobald das erste Produkt eingescanntw wird, wird zum Scan-Screen gewechselt
+    //sobald das erste Produkt eingescannt wird, wird zum Scan-Screen gewechselt
     getActualProduct();
     getProducts();
     imgChanger(actualProduct);
