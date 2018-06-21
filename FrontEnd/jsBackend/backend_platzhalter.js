@@ -20,7 +20,7 @@ function getActualProduct() {
     actualProduct = backendActualProduct;
 }
 
-function resetbackendActualProduct() {
+function resetBackendActualProduct() {
     backendActualProduct = "nothing";
     locked = false;
 }
