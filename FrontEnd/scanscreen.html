@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="p5/p5.min.js"></script>
+    <script src="jsBackend/backend_platzhalter.js"></script>
+    <script src="js/main.js"></script>
+    <title>AQUALITY</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link href="frontend.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+    </style>
+
+</head>
+
+<body>
+    <!--sobald der erste Artikel gescannt wird, wird zum scan-screen gescrollts 'function getActualProduct(){}'-->
+    <div>
+        <h1> Wählen Sie die Menge des gescannten Produktes </h1>
+    </div>
+    <div class="grid-container">
+        <!--minus-button 'function deleteProduct(productname){}'-->
+        <div style="text-align:right;">
+            <br style="font-size:100px;">
+            <buttton id="minus-button" onclick="deleteButton()" type="button" class="btn btn">
+                <b style="color: white;">-</b>
+            </buttton>
+        </div>
+
+        <!--Produkt-Ansicht 'function getBackendVariables(){}'-->
+        <div style="text-align: center;">
+            <!--feste Bildgröße festlegen für alle Produktbilder, damit sich der screen nicht verschiebt!-->
+            <img id="product" src="Tomate.png" alt="">
+        </div>
+
+        <!--plus-button 'function addProduct(productname){}'-->
+        <div style="text-align:left;">
+            <br style="font-size:100px;">
+            <button id="plus-button" onclick="addButton()" type="button" class="btn btn">
+                <b style="color: white;">+</b>
+            </button>
+        </div>
+    </div>
+    <div class="grid-container zwei">
+        <!--Zum Warenkorb hinzufügen button-->
+        <div style="text-align:right;">
+            <button id="cancel" onclick="cancel()" type="button" class="btn btn"> x </button>
+        </div>
+
+        <div style="text-align: center;">
+            <p id="productCounter">0</p>
+        </div>
+
+        <div style="text-align:left;">
+            <button id="addToShoppingCart" onclick="addSC()" type="button" class="btn btn"> &#x2193; </button>
+        </div>
+    </div>
+    <!--Warenkorb-->
+    <!--Zur Kasse-button (evtl. pulsierend)-->
+    <button id="kasse-button" type="button" onclick="printBill()" class="btn btn-block">
+        Zur Kasse
+    </button>
+    <!--sobald alles eingescannt wurde, wird zum ergebnis-screen gewechselt und 'function printBill(){}'-->
+</body>

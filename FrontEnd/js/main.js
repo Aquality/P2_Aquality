@@ -138,7 +138,7 @@ function draw() {
     imgChanger(actualProduct);
     if (actualProduct != "nothing") {
         document.getElementById("productCounter").style.display = "block";
-        location.hash = "#scan-screen";
+        //location.hash = "#scan-screen";
         for(var i = 0; i < products.length; i++) {
             if(products[i].name == actualProduct) {
                 document.getElementById("productCounter").innerHTML = products[i].startCount + productCounter;
@@ -160,7 +160,7 @@ function keyPressed() {
 
 function imgChanger(product) {
     //aktualisiert die Produktanzeige
-    document.getElementById("product").src = product + ".png";
+    document.getElementById("product").src = product + ".svg";
 }
 
 function addButton() {
@@ -202,6 +202,3 @@ function cancel() {
     resetBackendActualProduct();
     document.getElementById("productCounter").innerHTML = productCounter;
 }
-
-
-
