@@ -4,13 +4,13 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="p5/p5.min.js"></script>
-    <script src="jsBackend/backend_platzhalter.js"></script>
-    <script src="js/main.js"></script>
     <title>AQUALITY</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
         .grid-container {
             grid-template-columns: 50vw 50vw;
             display: grid;
@@ -19,6 +19,10 @@
 
         body {
             font-size: 12pt;
+            width: 21cm;
+            margin: 0 auto;
+            padding: 0;
+            height: 29.7cm;
         }
 
         table {
@@ -43,10 +47,6 @@
         p {
             font-size:10pt;
         }
-        .logo {
-            text-align: left;
-            margin-left: 10%;
-        }
 
         #logo {
             width: 200px;
@@ -59,8 +59,8 @@
         }
 
         .productTable {
-            padding-left: 10%;
-            width: 90vw;
+            margin: 0 auto;
+            width: 80%;
         }
 
         .right {
@@ -68,10 +68,13 @@
         }
 
         .anzahl {
-            width: 15vw;
+            text-align: left;
+            width: 15%;
         }
 
-        .produkt {}
+        .produkt {
+            text-align: left;
+        }
 
         .liter {
             text-align: right;
@@ -83,14 +86,15 @@
 
         }
 
-        .contact {
-            width: 100%;
-            position: absolute;
-            bottom: 5%;
-        }
         .left {
             text-align: left;
             padding: 2%;
+        }
+
+        .footer{
+            position: absolute;
+            bottom: 3%;
+            width:21cm;
         }
     </style>
 </head>
@@ -131,21 +135,17 @@
         </table>
     </div>
 
-    <div class="grid-container contact">
+    <div class="footer">
 
-        <div class="right">
+        <div class="center">
             <img src="frame.png" alt="" style="width:100px">
 
         </div>
-        <div class="left">
+        <div class="center">
             <p>
                 Projekt von: 
                 <br>
-                 Helene Lehmann, 
-                <br>
-                 Nicolas Martin und 
-                <br> 
-                Alesandra Piazza
+                 Helene Lehmann, Nicolas Martin und Alesandra Piazza
             </p>
         </div>
 
