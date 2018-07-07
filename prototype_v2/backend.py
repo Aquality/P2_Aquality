@@ -261,7 +261,164 @@ async def backendSocket(websocket, path):
 
             #erstellt das html dokument
             with open('/home/pi/Desktop/prototype_v3/print_data/data.html', 'w+') as outfile:
-                outfile.write("<html><h1>Test</h1></html>")
+                outfile.write("""
+                    <!DOCTYPE html>
+                    <html lang="en">
+
+                    <head>
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                        <script src="p5/p5.min.js"></script>
+                        <script src="jsBackend/backend_platzhalter.js"></script>
+                        <script src="js/main.js"></script>
+                        <title>AQUALITY</title>
+                        <meta charset="UTF-8" />
+                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                        <style>
+                            .grid-container {
+                                grid-template-columns: 50vw 50vw;
+                                display: grid;
+                                align-content: center;
+                            }
+                            body {
+                                font-size: 12pt;
+                            }
+                            table {
+                                font-family: arial, sans-serif;
+                                border-collapse: collapse;
+                                width: 100%;
+                            }
+                            td {
+                                padding: 8px;
+                            }
+                            th {
+                                padding: 8px;
+                                border-bottom: 1px solid black;
+                            }
+                            tr:nth-child(even) {
+                                /*background-color: #dddddd;*/
+                            }
+                            
+                            p {
+                                font-size:10pt;
+                            }
+                            .logo {
+                                text-align: left;
+                                margin-left: 10%;
+                            }
+                            #logo {
+                                width: 200px;
+                                padding-top: 5%;
+                                padding-bottom: 10%;
+                            }
+                            .center {
+                                text-align: center;
+                            }
+                            .productTable {
+                                padding-left: 10%;
+                                width: 90vw;
+                            }
+                            .right {
+                                text-align: right;
+                            }
+                            .anzahl {
+                                width: 15vw;
+                            }
+                            .produkt {}
+                            .liter {
+                                text-align: right;
+                            }
+                            .ergebnis {
+                                border-top: 1px solid black;
+                            }
+                            .contact {
+                                width: 100%;
+                                position: absolute;
+                                bottom: 5%;
+                            }
+                            .left {
+                                text-align: left;
+                                padding: 2%;
+                            }
+                        </style>
+                    </head>
+
+                    <body>
+                        <div class="center">
+                            <img src="aquality_logo_sw.svg" alt="" id="logo">
+                        </div>
+
+                        <div class="productTable">
+                            <table>
+                                <tr>
+                                    <th class="anzahl">Anzahl</th>
+                                    <th class="produkt">Produkt</th>
+                                    <th class="liter">Liter</th>
+                                </tr>
+                """)
+
+                #einzelnen produkte hinzufügen
+
+                for product in products:
+                    outfile.write("<tr>")
+                    
+                    outfile.write("<td class="anzahl">" + str(product.count) + " </td>")
+                    outfile.write("<td class="produkt">" + str(product.name) + " </td>")
+                    outfile.write("<td class="liter">" + str(product.water * product.count) + " </td>")
+
+                    outfile.write("</tr>")
+
+                outfile.write("""
+                            <tr>
+                <td class="ergebnis"></td>
+                <td class="ergebnis"></td>
+                <td class="liter ergebnis">
+                    <!--Ergebnis Gesamtwasserverbrauch-->
+                """)
+
+                #gesamt Wasser
+
+                outfile.write(str(totalWater))
+
+                #
+                
+                #schließt die tabelle
+                outfile.write("""
+                            </td>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                    <div class="grid-container contact">
+
+                        <div class="right">
+                            <img src="frame.png" alt="" style="width:100px">
+
+                        </div>
+                        <div class="left">
+                            <p>
+                                Projekt von: 
+                                <br>
+                                Helene Lehmann, 
+                                <br>
+                                Nicolas Martin und 
+                                <br> 
+                                Alesandra Piazza
+                            </p>
+                        </div>
+
+                    </div>
+
+                </body>
+                </html>
+                """)
+
+                #
 
             #erstellt ein pdf aus der html datei
             pdfkit.from_file("/home/pi/Desktop/prototype_v3/print_data/data.html", "/home/pi/Desktop/prototype_v3/data.pdf")
@@ -272,6 +429,7 @@ async def backendSocket(websocket, path):
 
         elif value == "resetBackend":
             print("Backend wurde resettet")
+
 
         else:
             await websocket.send(value)
