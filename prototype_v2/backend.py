@@ -37,6 +37,7 @@ actualProduct= "nothing"
 jsonString = ""
 jsonData = []
 locked = False
+sendProductsArray = False
 
 #=== SQL Connection ===
 sqlConn = pymysql.connect(host='127.0.0.1',
@@ -71,6 +72,8 @@ class InputReader(threading.Thread):
 
         global jsonData
 
+        global sendProductsArray
+
         while 1:
 
             #liest den arduino aus
@@ -79,6 +82,7 @@ class InputReader(threading.Thread):
             if len(actualInput) > 0:
                 
 
+                #verarbeitet den Input
                 actualInput = actualInput[:-2]
                 actualInput = actualInput.decode("utf-8")
                 actualInput = str(actualInput)
@@ -99,6 +103,11 @@ class InputReader(threading.Thread):
                     
                     #Setzt das zuletzt eingescannte Produkt als actualProduct
                     actualProduct = actualName
+                    
+                    #berechnet totalWater
+                    totalWater = 0
+                    for product in products:
+                        totalWater = totalWater + product.water * product.count
 
                 #Ueberfuehrt das products array in ein JSON Objekt
                 
@@ -107,8 +116,11 @@ class InputReader(threading.Thread):
                     product.count = int(product.count)
                     jsonData.append(json.dumps(product.__dict__))
                 
-                jsonString = json.dumps(jsonData)  
+                jsonString = json.dumps(jsonData)
 
+
+                #Gibt den Websocket den Befehl das Products Array zu übermitteln
+                    sendProductsArray = True
                 print(products)
 
 
@@ -118,7 +130,6 @@ class InputReader(threading.Thread):
 #==============================================================================================================
 
 inputReaderThread = InputReader()
-
 
 inputReaderThread.start()
 
@@ -137,7 +148,18 @@ async def backendSocket(websocket, path):
     global jsonData
     global locked
     global products
+
+    global sendProductsArray
+
+    global totalWater
+
     while True:
+
+        if sendProductsArray == True:
+            await websocket.send(jsonString)
+            sendProductsArray = False
+        
+    
         value = await websocket.recv()
 
         #Teilt den empfangenen String an den Leerzeichen auf, und schreibt ihn in ein Array
@@ -156,7 +178,7 @@ async def backendSocket(websocket, path):
 
 
         elif value == "getTotalWater":
-            await websocket.send(json.dumps(1324))
+            await websocket.send(json.dumps(totalWater))
 
 
         elif value == "getProducts":
@@ -197,6 +219,14 @@ async def backendSocket(websocket, path):
             
             jsonString = json.dumps(jsonData)
 
+            #berechnet totalWater
+            totalWater = 0
+            for product in products:
+                totalWater = totalWater + product.water * product.count
+
+            await websocket.send(jsonString)
+            await websocket.send(json.dumps(totalWater))
+
 
 
         elif valueSplitted[0] == "delete":
@@ -216,10 +246,28 @@ async def backendSocket(websocket, path):
                     for product in products:
                         product.count = int(product.count)
                         jsonData.append(json.dumps(product.__dict__))
+
+                    #berechnet totalWater
+                    totalWater = 0
+                    for product in products:
+                        totalWater = totalWater + product.water * product.count
                     
                     jsonString = json.dumps(jsonData)
+
+                    await websocket.send(jsonString)
+                    await websock.send(json.dumps(totalWater))
         
         elif value == "printBill":
+
+            #erstellt das html dokument
+            with open('/home/pi/Desktop/prototype_v3/print_data/data.html', 'w+') as outfile:
+                outfile.write("<html><h1>Test</h1></html>")
+
+            #erstellt ein pdf aus der html datei
+            pdfkit.from_file("/home/pi/Desktop/prototype_v3/print_data/data.html", "/home/pi/Desktop/prototype_v3/data.pdf")
+            #sendet dem Drucker den Befehl zum Drucken
+            call(['lp', '-d', 'Epson_Stylus_SX420W', '/home/pi/Desktop/prototype_v3/print_data/data.pdf'])
+
             print("printing Bill")
 
         elif value == "resetBackend":
