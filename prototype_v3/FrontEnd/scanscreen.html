@@ -19,16 +19,19 @@
 <body>
     <!--sobald der erste Artikel gescannt wird, wird zum scan-screen gescrollts 'function getActualProduct(){}'-->
     <div class="SC">
-        <buttton id="shoppingCart" onclick="deleteButton()" type="button" class="btn btn">
-            <img src="icons/Einkaufswagen.svg" alt="SC" id="SCicon">
-        </buttton>
+        <a href="shoppingCart.html">
+            <buttton id="shoppingCart" onclick="" type="button" class="btn btn">
+                <img src="icons/Einkaufswagen.svg" alt="SC" id="SCicon">
+            </buttton>
+        </a>
     </div>
     <div class="title">
         <h1>Wählen Sie die Menge des eingescannten Produktes </h1>
     </div>
     <div class="grid-container">
         <!--minus-button 'function deleteProduct(productname){}'-->
-        <div style="text-align:right;">
+        <div class="right">
+            <br class="absatz">
             <buttton id="minus-button" onclick="deleteButton()" type="button" class="btn btn">
                 -
             </buttton>
@@ -42,6 +45,7 @@
 
         <!--plus-button 'function addProduct(productname){}'-->
         <div style="text-align:left;">
+                <br class="absatz">
             <button id="plus-button" onclick="addButton()" type="button" class="btn btn">
                 +
             </button>

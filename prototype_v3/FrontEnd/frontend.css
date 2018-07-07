@@ -30,6 +30,51 @@ h1 {
     background-color: rgb(4, 204, 204);
     font-size: 30px;
 }
+#shoppingCart2 {
+    font-weight: lighter;
+    width: 8vw; 
+    height: 6vw; 
+    background-color: rgb(0, 142, 138);
+    font-size: 30px;
+}
+#productTable {
+    text-align: center;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    padding: 5px;
+}
+
+th {
+    padding: 5px;
+}
+.counter{
+    text-align: right;
+}
+.product {
+
+}
+.right {
+    text-align: right;
+}
+.BB {
+    text-align: left;
+}
+#back {
+    font-weight: lighter;
+    width: 8vw; 
+    height: 6vw; 
+    background-color: rgb(4, 204, 204);
+    font-size: 30px;
+}
+#back:hover {
+    color: rgb(99, 99, 99);
+}
 .title {
     width: 100%; 
     text-align: center;
@@ -44,6 +89,9 @@ h1 {
     text-align: center;
     padding-top: 10vh;
 }
+.absatz {
+    font-size: 12vh; 
+}
 #minus-button {
     border-radius: 50%; 
     width: 6vw; 
@@ -55,7 +103,7 @@ h1 {
     background-color: rgb(148, 211, 66);
 }
 #product {
-    width: 25vw; 
+    height: 25vw; 
     text-align: center;
 }
 #plus-button {
@@ -77,6 +125,11 @@ h1 {
 }
 .zwei {
     grid-template-columns: auto 10vw auto; 
+    display:grid; 
+    align-content:center;    
+}
+.drei {
+    grid-template-columns: auto auto; 
     display:grid; 
     align-content:center;    
 }
@@ -120,4 +173,7 @@ h1 {
 }
 #kasse-button:hover {
     color: rgb(99 ,99 ,99);
+}
+.right {
+    text-align: right;
 }

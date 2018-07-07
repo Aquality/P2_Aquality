@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="p5/p5.min.js"></script>
+    <script src="jsBackend/backend_platzhalter.js"></script>
+    <script src="js/main.js"></script>
+    <title>SHOPPINGCART</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link href="frontend.css" rel="stylesheet">
+    <style>
+    </style>
+
+</head>
+
+<body>
+    <!--sobald der erste Artikel gescannt wird, wird zum scan-screen gescrollts 'function getActualProduct(){}'-->
+    <div class="grid-container drei">
+        <div class="BB">
+            <a href="scanscreen.html">
+                <buttton id="back" onclick="" type="button" class="btn btn">
+                        &#x2190;
+                </buttton>
+            </a>
+        </div>
+        <div class="SC">
+            <buttton id="shoppingCart2" onclick="deleteButton()" type="button" class="btn btn">
+                <img src="icons/Einkaufswagen.svg" alt="SC" id="SCicon">
+            </buttton>
+        </div>
+    </div>
+    <div class="title">
+        <h1>Ihr Einkaufswagen </h1>
+    </div>
+    <div class="productTable">
+            <table>
+                <tr>
+                    <th class="counter">-</th>
+                    <th class="counter">Anzahl</th>
+                    <th class="product">Produkt</th>
+                    <th class="">+</th>
+                </tr>
+                <!--einzelne Produktdaten hinzufügen pro Block-->
+                <tr>
+                    <td class="counter"> <a href="" onclick="deleteButton()"> - </a> </td>
+                    <td class="counter">4</td>
+                    <td class="product">Tomate</td>
+                    <td class=""> <a href="" onclick="deleteButton()"> + </a> </td>
+                </tr>
+            </table>
+        </div>
+    <!--sobald alles eingescannt wurde, wird zum ergebnis-screen gewechselt und 'function printBill(){}'-->
+</body>
+
+</html>
