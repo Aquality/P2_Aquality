@@ -120,7 +120,7 @@ class InputReader(threading.Thread):
 
 
                 #Gibt den Websocket den Befehl das Products Array zu übermitteln
-                    sendProductsArray = True
+                sendProductsArray = True
                 print(products)
 
 
@@ -263,21 +263,21 @@ async def backendSocket(websocket, path):
             with open('/home/pi/Desktop/prototype_v3/print_data/data.html', 'w+') as outfile:
                 outfile.write("""
                     <!DOCTYPE html>
-                    <html lang="en">
+                    <html lang=\"en\">
 
                     <head>
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-                        <script src="p5/p5.min.js"></script>
-                        <script src="jsBackend/backend_platzhalter.js"></script>
-                        <script src="js/main.js"></script>
+                        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+                        <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">
+                        <script src=\"p5/p5.min.js\"></script>
+                        <script src=\"jsBackend/backend_platzhalter.js\"></script>
+                        <script src=\"js/main.js\"></script>
                         <title>AQUALITY</title>
-                        <meta charset="UTF-8" />
-                        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                        <meta charset=\"UTF-8\" />
+                        <link rel=\"stylesheetß\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css\">
+                        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
+                        <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js\"></script>
+                        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js\"></script>
+                        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>
                         <style>
                             .grid-container {
                                 grid-template-columns: 50vw 50vw;
@@ -348,16 +348,16 @@ async def backendSocket(websocket, path):
                     </head>
 
                     <body>
-                        <div class="center">
-                            <img src="aquality_logo_sw.svg" alt="" id="logo">
+                        <div class=\"center\">
+                            <img src=\"aquality_logo_sw.svg\" alt=\"\" id=\"logo\">
                         </div>
 
-                        <div class="productTable">
+                        <div class=\"productTable\">
                             <table>
                                 <tr>
-                                    <th class="anzahl">Anzahl</th>
-                                    <th class="produkt">Produkt</th>
-                                    <th class="liter">Liter</th>
+                                    <th class=\"anzahl\">Anzahl</th>
+                                    <th class=\"produkt\">Produkt</th>
+                                    <th class=\"liter\">Liter</th>
                                 </tr>
                 """)
 
@@ -366,17 +366,17 @@ async def backendSocket(websocket, path):
                 for product in products:
                     outfile.write("<tr>")
                     
-                    outfile.write("<td class="anzahl">" + str(product.count) + " </td>")
-                    outfile.write("<td class="produkt">" + str(product.name) + " </td>")
-                    outfile.write("<td class="liter">" + str(product.water * product.count) + " </td>")
+                    outfile.write("<td class=\"anzahl\">" + str(product.count) + "</td>")
+                    outfile.write("<td class=\"produkt\">" + str(product.name) + "</td>")
+                    outfile.write("<td class=\"liter\">" + str(product.water * product.count) + "</td>")
 
                     outfile.write("</tr>")
 
                 outfile.write("""
                             <tr>
-                <td class="ergebnis"></td>
-                <td class="ergebnis"></td>
-                <td class="liter ergebnis">
+                <td class=\"ergebnis\"></td>
+                <td class=\"ergebnis\"></td>
+                <td class=\"liter ergebnis\">
                     <!--Ergebnis Gesamtwasserverbrauch-->
                 """)
 
@@ -394,13 +394,13 @@ async def backendSocket(websocket, path):
                         </table>
                     </div>
 
-                    <div class="grid-container contact">
+                    <div class=\"grid-container contact\">
 
-                        <div class="right">
-                            <img src="frame.png" alt="" style="width:100px">
+                        <div class=\"right\">
+                            <img src=\"frame.png\" alt=\"\" style=\"width:100px\">
 
                         </div>
-                        <div class="left">
+                        <div class=\"left\">
                             <p>
                                 Projekt von: 
                                 <br>
@@ -418,7 +418,6 @@ async def backendSocket(websocket, path):
                 </html>
                 """)
 
-                #
 
             #erstellt ein pdf aus der html datei
             pdfkit.from_file("/home/pi/Desktop/prototype_v3/print_data/data.html", "/home/pi/Desktop/prototype_v3/data.pdf")
