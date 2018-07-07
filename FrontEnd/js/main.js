@@ -160,7 +160,7 @@ function keyPressed() {
 
 function imgChanger(product) {
     //aktualisiert die Produktanzeige
-    document.getElementById("product").src = product + ".svg";
+    document.getElementById("product").src = "icons/" + product + ".svg";
 }
 
 function addButton() {
