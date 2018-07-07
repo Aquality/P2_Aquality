@@ -41,13 +41,15 @@ h1 {
     text-align: center;
 }
 table {
+    text-align: center;
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
 td {
-    padding: 5px;
+    padding: 15px;
+  
 }
 
 th {
@@ -55,9 +57,32 @@ th {
 }
 .counter{
     text-align: right;
+    width: 20%;
 }
 .product {
+    text-align: left;
+    width: 20%;
 
+}
+.minus {
+    font-size: 20pt;
+    text-align: right;
+    width: 20%;
+
+}
+.minus:hover {
+    color: rgb(148, 211, 66);
+    text-decoration-line: none;
+}
+.plus {
+    font-size: 20pt;
+    text-align: left;
+    width: 20%;
+
+}
+.plus:hover {
+    color: rgb(255, 61, 59);
+    text-decoration-line: none;
 }
 .right {
     text-align: right;
