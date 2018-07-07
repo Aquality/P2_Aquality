@@ -137,13 +137,17 @@ function draw() {
     imgChanger(actualProduct);
     document.getElementById("plus-button").style.display = "none";
     document.getElementById("minus-button").style.display = "none";
+    document.getElementById("cancel").style.display = "none";
+    document.getElementById("addToShoppingCart").style.display = "none";
     if (actualProduct != "nothing") {
-        document.getElementById("productCounter").style.display = "block";
-        document.getElementById("plus-button").style.display = "grid";
-        document.getElementById("minus-button").style.display = "grid";
-        for(var i = 0; i < products.length; i++) {
-            if(products[i].name == actualProduct) {
-                if(productCounter == 0) {
+        document.getElementById("productCounter").style.display = "grid";
+        document.getElementById("plus-button").style.display = "";
+        document.getElementById("minus-button").style.display = "";
+        document.getElementById("cancel").style.display = "";
+        document.getElementById("addToShoppingCart").style.display = "";
+        for (var i = 0; i < products.length; i++) {
+            if (products[i].name == actualProduct) {
+                if (productCounter == 0) {
                     productCounter = products[i].startCount;
                     document.getElementById("productCounter").innerHTML = productCounter;
                 }
@@ -163,24 +167,27 @@ function addButton() {
     //Fügt der Produktmenge +1 des jeweiligen Produktes hinzu 
     productCounter++;
     document.getElementById("productCounter").innerHTML = productCounter;
+    document.getElementById("plus").innerHTML = productCounter;
+
 }
 
 function deleteButton() {
 
 
-    if(productCounter > 1) {
+    if (productCounter > 1) {
         productCounter--;
     }
     document.getElementById("productCounter").innerHTML = productCounter;
+    document.getElementById("minus").innerHTML = productCounter;
 }
 
 function addSC() {
     //aktualisiert die Produktdaten nach Eingabe und Bestätigung der Menge
     addProduct(actualProduct, productCounter);
 
-    
-    for(var i=0; i < products.length; i++) {
-        if(products[i].name == actualProduct) {
+
+    for (var i = 0; i < products.length; i++) {
+        if (products[i].name == actualProduct) {
             console.log(products[i].count);
         }
     }

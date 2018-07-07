@@ -39,13 +39,14 @@
 
         <!--Produkt-Ansicht 'function getBackendVariables(){}'-->
         <div style="text-align: center;">
+            <br class="absatzProdukt">
             <!--feste Bildgröße festlegen für alle Produktbilder, damit sich der screen nicht verschiebt!-->
             <img id="product" src="icons/nothing.svg" alt="">
         </div>
 
         <!--plus-button 'function addProduct(productname){}'-->
         <div style="text-align:left;">
-                <br class="absatz">
+            <br class="absatz">
             <button id="plus-button" onclick="addButton()" type="button" class="btn btn">
                 +
             </button>
@@ -63,16 +64,18 @@
 
         <div style="text-align:left;">
             <button id="addToShoppingCart" onclick="addSC()" type="button" class="btn btn">
-                    <img src="icons/Einkaufswagen.svg" alt="SC" id="SCbutton">    
+                <img src="icons/Einkaufswagen.svg" alt="SC" id="SCbutton">
             </button>
         </div>
     </div>
     <!--Warenkorb-->
     <!--Zur Kasse-button (evtl. pulsierend)-->
     <div class="kasse">
-        <button id="kasse-button" type="button" onclick="printBill()" class="btn btn-block">
-            Zur Kasse
-        </button>
+        <a href="printscreen.html">
+            <button id="kasse-button" type="button" onclick="printBill()" class="btn btn-block">
+                Zur Kasse
+            </button>
+        </a>
     </div>
     <!--sobald alles eingescannt wurde, wird zum ergebnis-screen gewechselt und 'function printBill(){}'-->
 </body>
