@@ -262,153 +262,165 @@ async def backendSocket(websocket, path):
             #erstellt das html dokument
             with open('/home/pi/Desktop/prototype_v3/print_data/data.html', 'w+') as outfile:
                 outfile.write("""
-                    <!DOCTYPE html>
-                    <html lang=\"en\">
+<!DOCTYPE html>
+<html lang=\"en\">
 
-                    <head>
-                        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-                        <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">
-                        <title>AQUALITY</title>
-                        <meta charset=\"UTF-8\" />
-                        <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\">
-                        <style>
-                            .grid-container {
-                                grid-template-columns: 50vw 50vw;
-                                display: grid;
-                                align-content: center;
-                            }
-                            body {
-                                font-size: 12pt;
-                            }
-                            table {
-                                font-family: arial, sans-serif;
-                                border-collapse: collapse;
-                                width: 100%;
-                            }
-                            td {
-                                padding: 8px;
-                            }
-                            th {
-                                padding: 8px;
-                                border-bottom: 1px solid black;
-                            }
-                            tr:nth-child(even) {
-                                /*background-color: #dddddd;*/
-                            }
-                            
-                            p {
-                                font-size:10pt;
-                            }
-                            .logo {
-                                text-align: left;
-                                margin-left: 10%;
-                            }
-                            #logo {
-                                width: 200px;
-                                padding-top: 5%;
-                                padding-bottom: 10%;
-                            }
-                            .center {
-                                text-align: center;
-                            }
-                            .productTable {
-                                padding-left: 10%;
-                                width: 90vw;
-                            }
-                            .right {
-                                text-align: right;
-                            }
-                            .anzahl {
-                                width: 15vw;
-                            }
-                            .produkt {}
-                            .liter {
-                                text-align: right;
-                            }
-                            .ergebnis {
-                                border-top: 1px solid black;
-                            }
-                            .contact {
-                                width: 100%;
-                                position: absolute;
-                                bottom: 5%;
-                            }
-                            .left {
-                                text-align: left;
-                                padding: 2%;
-                            }
-                        </style>
-                    </head>
+<head>
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">
+    <title>AQUALITY</title>
+    <meta charset=\"UTF-8\" />
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .grid-container {
+            grid-template-columns: 50vw 50vw;
+            display: grid;
+            align-content: center;
+        }
 
-                    <body>
-                        <div class=\"center\">
-                            <img src=\"logo/aquality_logo_sw.svg\" alt=\"\" id=\"logo\">
-                        </div>
+        body {
+            font-size: 12pt;
+            width: 21cm;
+            margin: 0 auto;
+            padding: 0;
+            height: 29.7cm;
+        }
 
-                        <div class=\"productTable\">
-                            <table>
-                                <tr>
-                                    <th class=\"anzahl\">Anzahl</th>
-                                    <th class=\"produkt\">Produkt</th>
-                                    <th class=\"liter\">Liter</th>
-                                </tr>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            padding: 8px;
+        }
+
+        th {
+            padding: 8px;
+            border-bottom: 1px solid black;
+        }
+
+        tr:nth-child(even) {
+            /*background-color: #dddddd;*/
+        }
+         
+        p {
+            font-size:10pt;
+        }
+
+        #logo {
+            width: 200px;
+            padding-top: 5%;
+            padding-bottom: 10%;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .productTable {
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        .anzahl {
+            text-align: left;
+            width: 15%;
+        }
+
+        .produkt {
+            text-align: left;
+        }
+
+        .liter {
+            text-align: right;
+
+        }
+
+        .ergebnis {
+            border-top: 1px solid black;
+
+        }
+
+        .left {
+            text-align: left;
+            padding: 2%;
+        }
+
+        .footer{
+            position: absolute;
+            bottom: 3%;
+            width:21cm;
+        }
+    </style>
+</head>
+
+<body>
+    <div class=\"center\">
+        <img src=\"logo/aquality_logo_sw.svg\" alt=\"\" id=\"logo\">
+    </div>
+
+    <div class=\"productTable\">
+        <table>
+            <tr>
+                <th class=\"anzahl\">Anzahl</th>
+                <th class=\"produkt\">Produkt</th>
+                <th class=\"liter\">Liter</th>
+            </tr>
                 """)
 
-                #einzelnen produkte hinzufügen
+                #fuegt produkte hinzu
 
                 for product in products:
                     outfile.write("<tr>")
-                    
                     outfile.write("<td class=\"anzahl\">" + str(product.count) + "</td>")
                     outfile.write("<td class=\"produkt\">" + str(product.name) + "</td>")
-                    outfile.write("<td class=\"liter\">" + str(product.water * product.count) + "</td>")
-
+                    outfile.write("<td class=\"liter\">" + str(product.count * product.water) + "</td>")
                     outfile.write("</tr>")
 
+                #gesamter wasserverbrauch
+
                 outfile.write("""
-                            <tr>
+                <tr>
                 <td class=\"ergebnis\"></td>
                 <td class=\"ergebnis\"></td>
                 <td class=\"liter ergebnis\">
-                    <!--Ergebnis Gesamtwasserverbrauch-->
                 """)
 
-                #gesamt Wasser
+                outfile.write("<b>" + str(totalWater) + "</b>")
 
-                outfile.write(str(totalWater))
-
-                #
-                
-                #schließt die tabelle
                 outfile.write("""
-                            </td>
-                            </tr>
+                </td>
+            </tr>
 
-                        </table>
-                    </div>
+        </table>
+    </div>
 
-                    <div class=\"grid-container contact\">
+    <div class=\"footer\">
 
-                        <div class=\"right\">
-                            <img src=\"frame.png\" alt=\"\" style=\"width:100px\">
+        <div class=\"center\">
+            <img src=\"frame.png\" alt="" style=\"width:100px\">
 
-                        </div>
-                        <div class=\"left\">
-                            <p>
-                                Projekt von: 
-                                <br>
-                                Helene Lehmann, 
-                                <br>
-                                Nicolas Martin und 
-                                <br> 
-                                Alesandra Piazza
-                            </p>
-                        </div>
+        </div>
+        <div class=\"center\">
+            <p>
+                Projekt von: 
+                <br>
+                 Helene Lehmann, Nicolas Martin und Alesandra Piazza
+            </p>
+        </div>
 
-                    </div>
-
-                </body>
-                </html>
+    </div>
+</body>
+</html>
                 """)
 
 
