@@ -18,29 +18,29 @@
 
 <body>
     <!--sobald der erste Artikel gescannt wird, wird zum scan-screen gescrollts 'function getActualProduct(){}'-->
-    <div>
-        <h1> Wählen Sie die Menge des gescannten Produktes </h1>
+    <div class="title">
+        <h1> Wählen Sie die Menge des eingescannten Produktes </h1>
     </div>
     <div class="grid-container">
         <!--minus-button 'function deleteProduct(productname){}'-->
         <div style="text-align:right;">
             <br style="font-size:100px;">
             <buttton id="minus-button" onclick="deleteButton()" type="button" class="btn btn">
-                <b style="color: white;">-</b>
+              -
             </buttton>
         </div>
 
         <!--Produkt-Ansicht 'function getBackendVariables(){}'-->
         <div style="text-align: center;">
             <!--feste Bildgröße festlegen für alle Produktbilder, damit sich der screen nicht verschiebt!-->
-            <img id="product" src="icons/Tomate.png" alt="">
+            <img id="product" src="icons/nothing.svg" alt="">
         </div>
 
         <!--plus-button 'function addProduct(productname){}'-->
         <div style="text-align:left;">
             <br style="font-size:100px;">
             <button id="plus-button" onclick="addButton()" type="button" class="btn btn">
-                <b style="color: white;">+</b>
+                +
             </button>
         </div>
     </div>
