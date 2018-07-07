@@ -94,7 +94,7 @@ function scanProduct() {
         for(var i = 0; i <= backendProducts.length; i++) {
 
             if(i == backendProducts.length) {
-                backendProducts.push(new Product("Tomate", 4, 150, 4));
+                backendProducts.push(new Product("Tomate", 0, 150, 4));
                 break;
             } else if(backendProducts[i].name == "Tomate") {
                 break;

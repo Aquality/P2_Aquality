@@ -99,7 +99,7 @@ class InputReader(threading.Thread):
                     actualName = data[1]
                     if actualName not in productNameList:
                         productNameList.append(actualName)
-                        products.append(Food(data[1], data[7], data[6], data[7]))
+                        products.append(Food(data[1], 0, data[6], data[7]))
                     
                     #Setzt das zuletzt eingescannte Produkt als actualProduct
                     actualProduct = actualName

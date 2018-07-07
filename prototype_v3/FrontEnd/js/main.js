@@ -132,29 +132,25 @@ function setup() {
 }
 
 function draw() {
-    //sobald das erste Produkt eingescannt wird, wird zum Scan-Screen gewechselt
     getActualProduct();
     getProducts();
     imgChanger(actualProduct);
+    document.getElementById("plus-button").style.display = "none";
+    document.getElementById("minus-button").style.display = "none";
     if (actualProduct != "nothing") {
         document.getElementById("productCounter").style.display = "block";
-        //location.hash = "#scan-screen";
+        document.getElementById("plus-button").style.display = "grid";
+        document.getElementById("minus-button").style.display = "grid";
         for(var i = 0; i < products.length; i++) {
             if(products[i].name == actualProduct) {
-                document.getElementById("productCounter").innerHTML = products[i].startCount + productCounter;
+                if(productCounter == 0) {
+                    productCounter = products[i].startCount;
+                    document.getElementById("productCounter").innerHTML = productCounter;
+                }
             }
         }
     } else {
         document.getElementById("productCounter").style.display = "none";
-    }
-}
-
-function keyPressed() {
-    //scannt Tomate Ein
-    if (keyCode == 84) {
-        scanProduct();
-    } else if (keyCode == 82) {
-        console.log(products);
     }
 }
 
@@ -166,32 +162,29 @@ function imgChanger(product) {
 function addButton() {
     //Fügt der Produktmenge +1 des jeweiligen Produktes hinzu 
     productCounter++;
-    console.log(productCounter);
+    document.getElementById("productCounter").innerHTML = productCounter;
 }
 
 function deleteButton() {
-    //Entfernt aus der Produktmenge -1 des jeweiligen Produktes
 
-    //nur solange die Produktmenge über 0 ist
-    
-    for(var i=0; i < products.length; i++) {
-        if(products[i].name == actualProduct && products[i].count + productCounter <= 1) {
-            cancel();
-        } else {
-            productCounter--;
-        }
+
+    if(productCounter > 1) {
+        productCounter--;
     }
-    //console.log(products[0]);
+    document.getElementById("productCounter").innerHTML = productCounter;
 }
 
 function addSC() {
     //aktualisiert die Produktdaten nach Eingabe und Bestätigung der Menge
+    addProduct(actualProduct, productCounter);
 
-    if(productCounter > 0) {
-        addProduct(actualProduct, productCounter);
-    } else {
-        deleteProduct(actualProduct, productCounter);
+    
+    for(var i=0; i < products.length; i++) {
+        if(products[i].name == actualProduct) {
+            console.log(products[i].count);
+        }
     }
+
     resetBackendActualProduct();
     unlockScann();
     productCounter = 0;
@@ -200,5 +193,16 @@ function addSC() {
 
 function cancel() {
     resetBackendActualProduct();
+    productCounter = 0;
     document.getElementById("productCounter").innerHTML = productCounter;
+}
+
+
+function keyPressed() {
+    //scannt Tomate Ein
+    if (keyCode == 84) {
+        scanProduct();
+    } else if (keyCode == 82) {
+        console.log(products);
+    }
 }
