@@ -268,12 +268,9 @@ async def backendSocket(websocket, path):
                     <head>
                         <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
                         <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">
-                        <script src=\"p5/p5.min.js\"></script>
-                        <script src=\"jsBackend/backend_platzhalter.js\"></script>
-                        <script src=\"js/main.js\"></script>
                         <title>AQUALITY</title>
                         <meta charset=\"UTF-8\" />
-                        <link rel=\"stylesheet\" href=\"css/min.css\">
+                        <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\">
                         <style>
                             .grid-container {
                                 grid-template-columns: 50vw 50vw;
@@ -345,7 +342,7 @@ async def backendSocket(websocket, path):
 
                     <body>
                         <div class=\"center\">
-                            <img src=\"aquality_logo_sw.svg\" alt=\"\" id=\"logo\">
+                            <img src=\"logo/aquality_logo_sw.svg\" alt=\"\" id=\"logo\">
                         </div>
 
                         <div class=\"productTable\">
@@ -418,7 +415,7 @@ async def backendSocket(websocket, path):
             #erstellt ein pdf aus der html datei
             pdfkit.from_file("/home/pi/Desktop/prototype_v3/print_data/data.html", "/home/pi/Desktop/prototype_v3/data.pdf")
             #sendet dem Drucker den Befehl zum Drucken
-            call(['lp', '-d', 'Epson_Stylus_SX420W', '/home/pi/Desktop/prototype_v3/print_data/data.pdf'])
+            call(['lp', '-d', 'Epson_Stylus_SX420W', '/home/pi/Desktop/prototype_v3/data.pdf'])
 
             print("printing Bill")
 
