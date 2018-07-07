@@ -255,7 +255,7 @@ async def backendSocket(websocket, path):
                     jsonString = json.dumps(jsonData)
 
                     await websocket.send(jsonString)
-                    await websock.send(json.dumps(totalWater))
+                    await websocket.send(json.dumps(totalWater))
         
         elif value == "printBill":
 
@@ -283,10 +283,9 @@ async def backendSocket(websocket, path):
 
         body {
             font-size: 12pt;
-            width: 21cm;
-            margin: 0 auto;
+            width: 100%;
             padding: 0;
-            height: 29.7cm;
+            height: 36cm;
         }
 
         table {
@@ -358,7 +357,7 @@ async def backendSocket(websocket, path):
         .footer{
             position: absolute;
             bottom: 3%;
-            width:21cm;
+            width:100%;
         }
     </style>
 </head>
