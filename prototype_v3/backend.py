@@ -298,7 +298,7 @@ async def backendSocket(websocket, path):
             padding: 8px;
         }
 
-        tableHeading {
+        .tableHeading {
             padding: 8px;
             border-bottom: 1px solid black;
         }
@@ -365,8 +365,8 @@ async def backendSocket(websocket, path):
         }
 
         .imgIcon {
-            width:80%;
         }
+
     </style>
 </head>
 
@@ -389,7 +389,7 @@ async def backendSocket(websocket, path):
 
                 for product in products:
                     outfile.write("<tr>")
-                    outfile.write("<td class=\"icon\"><img class=\"imgIcon\" src=\"icons/" + str(product.name) + ".svg\" alt=\"\"></td>")
+                    outfile.write("<td class=\"icon\"><img class=\"imgIcon\" src=\"../FrontEnd/icons/" + str(product.name) + ".svg\" alt=\"\"></td>")
                     outfile.write("<td class=\"anzahl\">" + str(product.count) + "</td>")
                     outfile.write("<td class=\"produkt\">" + str(product.name) + "</td>")
                     outfile.write("<td class=\"liter\">" + str(product.count * product.water) + "</td>")

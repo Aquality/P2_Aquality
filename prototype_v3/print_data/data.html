@@ -35,7 +35,7 @@
             padding: 8px;
         }
 
-        th {
+        .tableHeading {
             padding: 8px;
             border-bottom: 1px solid black;
         }
@@ -67,6 +67,10 @@
             text-align: right;
         }
 
+        .icon {
+            width: 8%;
+        }
+
         .anzahl {
             text-align: left;
             width: 15%;
@@ -96,6 +100,12 @@
             bottom: 3%;
             width:100%;
         }
+
+        .imgIcon {
+            width:80%;
+            filter: saturate(0%);
+        }
+
     </style>
 </head>
 
@@ -107,16 +117,18 @@
     <div class="productTable">
         <table>
             <tr>
-                <th class="anzahl">Anzahl</th>
-                <th class="produkt">Produkt</th>
-                <th class="liter">Liter</th>
+                <th class"icon"></th>
+                <th class="anzahl tableHeading">Anzahl</th>
+                <th class="produkt tableHeading">Produkt</th>
+                <th class="liter tableHeading">Liter</th>
             </tr>
-                <tr><td class="anzahl">1</td><td class="produkt">Nudeln</td><td class="liter">925</td></tr>
+                <tr><td class="icon"><img class="imgIcon" src="../FrontEnd/icons/Tomate.svg" alt=""></td><td class="anzahl">2</td><td class="produkt">Tomate</td><td class="liter">86</td></tr><tr><td class="icon"><img class="imgIcon" src="../FrontEnd/icons/Nudeln.svg" alt=""></td><td class="anzahl">1</td><td class="produkt">Nudeln</td><td class="liter">925</td></tr>
                 <tr>
+                <td class="icon"></td>
                 <td class="ergebnis"></td>
                 <td class="ergebnis"></td>
                 <td class="liter ergebnis">
-                <b>925</b>
+                <b>1011</b>
                 </td>
             </tr>
 
