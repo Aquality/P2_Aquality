@@ -295,7 +295,8 @@ async def backendSocket(websocket, path):
         }
 
         td {
-            padding: 8px;
+            padding-left: 8px;
+            padding-right: 8px;
         }
 
         .tableHeading {
@@ -365,6 +366,7 @@ async def backendSocket(websocket, path):
         }
 
         .imgIcon {
+            width:65%
         }
 
     </style>
@@ -378,7 +380,7 @@ async def backendSocket(websocket, path):
     <div class=\"productTable\">
         <table>
             <tr>
-                <th class"icon"></th>
+                <th class="icon tableHeading"></th>
                 <th class=\"anzahl tableHeading\">Anzahl</th>
                 <th class=\"produkt tableHeading\">Produkt</th>
                 <th class=\"liter tableHeading\">Liter</th>
@@ -399,7 +401,7 @@ async def backendSocket(websocket, path):
 
                 outfile.write("""
                 <tr>
-                <td class="icon"></td>
+                <td class="icon ergebnis"></td>
                 <td class=\"ergebnis\"></td>
                 <td class=\"ergebnis\"></td>
                 <td class=\"liter ergebnis\">
