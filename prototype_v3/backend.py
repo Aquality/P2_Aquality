@@ -298,7 +298,7 @@ async def backendSocket(websocket, path):
             padding: 8px;
         }
 
-        th {
+        tableHeading {
             padding: 8px;
             border-bottom: 1px solid black;
         }
@@ -330,6 +330,10 @@ async def backendSocket(websocket, path):
             text-align: right;
         }
 
+        .icon {
+            width: 8%;
+        }
+
         .anzahl {
             text-align: left;
             width: 15%;
@@ -359,6 +363,10 @@ async def backendSocket(websocket, path):
             bottom: 3%;
             width:100%;
         }
+
+        .imgIcon {
+            width:80%;
+        }
     </style>
 </head>
 
@@ -370,9 +378,10 @@ async def backendSocket(websocket, path):
     <div class=\"productTable\">
         <table>
             <tr>
-                <th class=\"anzahl\">Anzahl</th>
-                <th class=\"produkt\">Produkt</th>
-                <th class=\"liter\">Liter</th>
+                <th class"icon"></th>
+                <th class=\"anzahl tableHeading\">Anzahl</th>
+                <th class=\"produkt tableHeading\">Produkt</th>
+                <th class=\"liter tableHeading\">Liter</th>
             </tr>
                 """)
 
@@ -380,6 +389,7 @@ async def backendSocket(websocket, path):
 
                 for product in products:
                     outfile.write("<tr>")
+                    outfile.write("<td class=\"icon\"><img class=\"imgIcon\" src=\"icons/" + str(product.name) + ".svg\" alt=\"\"></td>")
                     outfile.write("<td class=\"anzahl\">" + str(product.count) + "</td>")
                     outfile.write("<td class=\"produkt\">" + str(product.name) + "</td>")
                     outfile.write("<td class=\"liter\">" + str(product.count * product.water) + "</td>")
@@ -389,6 +399,7 @@ async def backendSocket(websocket, path):
 
                 outfile.write("""
                 <tr>
+                <td class="icon"></td>
                 <td class=\"ergebnis\"></td>
                 <td class=\"ergebnis\"></td>
                 <td class=\"liter ergebnis\">
