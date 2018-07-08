@@ -86,6 +86,8 @@ class InputReader(threading.Thread):
                 actualInput = actualInput[:-2]
                 actualInput = actualInput.decode("utf-8")
                 actualInput = str(actualInput)
+                
+                print(actualInput)
 
                 #waehlt Eintrag aus der Datenbak aus
 

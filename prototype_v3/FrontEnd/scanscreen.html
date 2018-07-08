@@ -9,7 +9,7 @@
     <script src="js/main.js"></script>
     <title>SCANSCREEN</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="frontend.css" rel="stylesheet">
     <style>
     </style>
@@ -20,9 +20,9 @@
     <!--sobald der erste Artikel gescannt wird, wird zum scan-screen gescrollts 'function getActualProduct(){}'-->
     <div class="SC">
         <a href="shoppingCart.html">
-            <buttton id="shoppingCart" onclick="" type="button" class="btn btn">
-                <img src="icons/Einkaufswagen.svg" alt="SC" id="SCicon">
-            </buttton>
+            <button id="shoppingCart" onclick="" type="button" class="btn btn">
+		<img src="icons/Einkaufswagen.svg" alt="SC" id="SCicon">
+            </button>
         </a>
     </div>
     <div class="title">
@@ -30,11 +30,11 @@
     </div>
     <div class="grid-container">
         <!--minus-button 'function deleteProduct(productname){}'-->
-        <div class="right">
+        <div style="text-align:right;">
             <br class="absatz">
-            <buttton id="minus-button" onclick="deleteButton()" type="button" class="btn btn">
+            <button id="minus-button" onclick="deleteButton()" type="button" class="btn btn">
                 -
-            </buttton>
+            </button>
         </div>
 
         <!--Produkt-Ansicht 'function getBackendVariables(){}'-->
