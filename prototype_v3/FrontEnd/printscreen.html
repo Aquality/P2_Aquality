@@ -7,6 +7,11 @@
     <script src="p5/p5.min.js"></script>
     <script src="jsBackend/backend_platzhalter.js"></script>
     <script src="js/main_index.js"></script>
+    <script>
+            function myFunction() {
+                setInterval(function(){  }, 5000);
+            }
+            </script>
     <title>AQUALITY</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -19,20 +24,18 @@
 
     <div id="print-screen">
         <!--background eventuell mit welle animieren-->
-        <div id="logo">
-            <!--neues logo!-->
-            <img id="logo" src="logo/Logo_Outline_weiß.svg" alt="logo">
-        </div>
-
         <div id="countdown">
-        
+            <!--<div class="loader"></div>-->
+
             <!--Animation des Ausdrucks-->
-            <img src="..." alt="ausdruck icon wie in doku + countdown">
+            <img id="printing" src="icons/printing.svg" alt="ausdruck icon wie in doku + countdown">
             <br>
-            <a href="ergebnis.html">weiter</a>
+            <a id="next" href="ergebnis.html"> weiter </a>
+        </div>
         </div>
 
 
     </div>
 </body>
+
 </html>
