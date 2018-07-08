@@ -82,6 +82,7 @@ h1 {
 
 /*Produktmengen-Anzeige*/
 #productCounter {
+    display: none;
     font-size:1.6em; 
     color:white; 
     padding-top:2vh;

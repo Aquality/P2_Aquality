@@ -139,6 +139,7 @@ function draw() {
     document.getElementById("minus-button").style.display = "none";
     document.getElementById("cancel").style.display = "none";
     document.getElementById("addToShoppingCart").style.display = "none";
+    document.getElementById("productCounter").style.display = "none";
     document.getElementById("heading").innerHTML = "Scanne ein weiteres Produkt ein";
     if (actualProduct != "nothing") {
         document.getElementById("productCounter").style.display = "inline-block";
@@ -146,6 +147,7 @@ function draw() {
         document.getElementById("minus-button").style.display = "inline-block";
         document.getElementById("cancel").style.display = "inline-block";
         document.getElementById("addToShoppingCart").style.display = "inline-block";
+        document.getElementById("productCounter").style.display = "inline-block";
         document.getElementById("heading").innerHTML = "Wähle die Menge des Produktes";
         for (var i = 0; i < products.length; i++) {
             if (products[i].name == actualProduct) {
