@@ -38,6 +38,7 @@ jsonString = ""
 jsonData = []
 locked = False
 sendProductsArray = False
+worseProducts = []
 
 #=== SQL Connection ===
 sqlConn = pymysql.connect(host='127.0.0.1',
@@ -73,6 +74,8 @@ class InputReader(threading.Thread):
         global jsonData
 
         global sendProductsArray
+
+        global worseProducts
 
         while 1:
 
@@ -262,7 +265,17 @@ async def backendSocket(websocket, path):
         elif value == "printBill":
 
             #erstellt das html dokument
+
+            preWorseProducts = sorted(products, key=lambda food: food.water, reverse=True)
+
+            for product in preWorseProducts:
+                if len(worseProducts) < 3:
+                    worseProducts.append(product)
+
             with open('/home/pi/Desktop/prototype_v3/print_data/data.html', 'w+') as outfile:
+
+
+#======================================================================================================
                 outfile.write("""
 <!DOCTYPE html>
 <html lang=\"en\">
@@ -273,10 +286,12 @@ async def backendSocket(websocket, path):
     <title>AQUALITY</title>
     <meta charset=\"UTF-8\" />
     <style>
-        *{
+        * {
             padding: 0;
             margin: 0;
+            font-family: arial, sans-serif;
         }
+
         .grid-container {
             grid-template-columns: 50vw 50vw;
             display: grid;
@@ -291,7 +306,6 @@ async def backendSocket(websocket, path):
         }
 
         table {
-            font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
@@ -306,12 +320,8 @@ async def backendSocket(websocket, path):
             border-bottom: 1px solid black;
         }
 
-        tr:nth-child(even) {
-            /*background-color: #dddddd;*/
-        }
-         
         p {
-            font-size:10pt;
+            font-size: 10pt;
         }
 
         #logo {
@@ -327,6 +337,7 @@ async def backendSocket(websocket, path):
         .productTable {
             margin: 0 auto;
             width: 80%;
+            margin-bottom: 5%;
         }
 
         .right {
@@ -362,32 +373,52 @@ async def backendSocket(websocket, path):
             padding: 2%;
         }
 
-        .footer{
+        .footer {
             position: absolute;
             bottom: 3%;
-            width:100%;
+            width: 100%;
         }
 
         .imgIcon {
-            width:65%
+            width: 65%
         }
 
+        .tipp {
+            width: 80%;
+            margin: 1% auto;
+            display: grid;
+            align-content: center;
+            border: 1px solid black;
+            height: auto;
+            border-radius: 5px;
+            grid-template-columns: auto auto;
+        }
+
+        .iconTipp {
+            width: 30%;
+            padding: 5%;
+        }
+
+        .iconTipp img {
+            margin: 0 auto;
+            width: 150px;
+        }
+
+        .textTipp {
+            font-size: 12pt;
+            padding: 4%;
+
+        }
     </style>
 </head>
 
 <body>
     <div class=\"center\">
-        <img src=\"logo/aquality_logo_sw.svg\" alt=\"\" id=\"logo\">
+        <img src="logo/aquality_logo_sw.svg\" alt=\"\" id=\"logo\">
     </div>
 
     <div class=\"productTable\">
         <table>
-            <tr>
-                <th class="icon tableHeading"></th>
-                <th class=\"anzahl tableHeading\">Anzahl</th>
-                <th class=\"produkt tableHeading\">Produkt</th>
-                <th class=\"liter tableHeading\">Liter</th>
-            </tr>
                 """)
 
                 #fuegt produkte hinzu
@@ -404,7 +435,7 @@ async def backendSocket(websocket, path):
 
                 outfile.write("""
                 <tr>
-                <td class="icon ergebnis"></td>
+                <td class=\"icon ergebnis\"></td>
                 <td class=\"ergebnis\"></td>
                 <td class=\"ergebnis\"></td>
                 <td class=\"liter ergebnis\">
@@ -414,11 +445,38 @@ async def backendSocket(websocket, path):
 
                 outfile.write("""
                 </td>
-            </tr>
+                </tr>
 
         </table>
     </div>
+    <div class=\"tipps\">
+    """)
 
+    for product in worseProducts:
+        outfile.write("""
+            <div class=\"tipp\">
+                <div class=\"iconTipp\">
+        """)
+
+        outfile.write("<img src=\"icons/Nudeln.svg\" alt=\"\">")
+
+        outfile.write("""
+            </div>
+                <div class=\"textTipp\">
+        """)
+
+        outfile.write("<h1>Nudeln</h1>")
+        outfile.write("<br>")
+        outfile.write("""<p>ipsum dolor sit amet consectetur adipisicing elit. Beatae, eaque est inventore sint, tempora vitae tenetur delectus
+                magni enim mollitia dicta animi, ea eligendi? Nulla sit velit modi repudiandae eos magni voluptate temporibus,
+                veritatis consectetur eveniet. Quae amet explicabo, ut sed consequuntur velit in ratione enim ea ipsam iste
+                molestiae?</p>""")
+        outfile.write("""
+            </div>
+        </div>
+        """)
+
+        outfile.write("""
     <div class=\"footer\">
 
         <div class=\"center\">
@@ -437,6 +495,8 @@ async def backendSocket(websocket, path):
 </body>
 </html>
                 """)
+
+#========================================================================================================
 
 
             #erstellt ein pdf aus der html datei
