@@ -353,6 +353,7 @@ async def backendSocket(websocket, path):
 
         .ergebnis {
             border-top: 1px solid black;
+            padding-top: 3%;
 
         }
 

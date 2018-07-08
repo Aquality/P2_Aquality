@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang=\ "en\">
+<html lang="en">
 
 <head>
-    <meta name=\ "viewport\" content=\ "width=device-width, initial-scale=1.0\">
-    <meta http-equiv=\ "X-UA-Compatible\" content=\ "ie=edge\">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AQUALITY</title>
-    <meta charset=\ "UTF-8\" />
+    <meta charset="UTF-8" />
     <style>
         * {
             padding: 0;
             margin: 0;
+            font-family: arial, sans-serif;
         }
 
         .grid-container {
@@ -26,7 +27,6 @@
         }
 
         table {
-            font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
@@ -39,10 +39,6 @@
         .tableHeading {
             padding: 8px;
             border-bottom: 1px solid black;
-        }
-
-        tr:nth-child(even) {
-            /*background-color: #dddddd;*/
         }
 
         p {
@@ -62,6 +58,7 @@
         .productTable {
             margin: 0 auto;
             width: 80%;
+            margin-bottom: 5%;
         }
 
         .right {
@@ -106,6 +103,33 @@
         .imgIcon {
             width: 65%
         }
+
+        .tipp {
+            width: 80%;
+            margin: 1% auto;
+            display: grid;
+            align-content: center;
+            border: 1px solid black;
+            height: auto;
+            border-radius: 5px;
+            grid-template-columns: auto auto;
+        }
+
+        .iconTipp {
+            width: 30%;
+            padding: 5%;
+        }
+
+        .iconTipp img {
+            margin: 0 auto;
+            width: 150px;
+        }
+
+        .textTipp {
+            font-size: 12pt;
+            padding: 4%;
+
+        }
     </style>
 </head>
 
@@ -128,7 +152,7 @@
                 </td>
                 <td class="anzahl">2</td>
                 <td class="produkt">Tomate</td>
-                <td class="liter">100</td>
+                <td class="liter">100 l</td>
             </tr>
 
             <tr>
@@ -136,11 +160,48 @@
                 <td class="ergebnis"></td>
                 <td class="ergebnis"></td>
                 <td class="liter ergebnis">
-                    <b>200</b>
+                    <b>200 l</b>
                 </td>
             </tr>
 
         </table>
+    </div>
+
+    <div class="tipps">
+
+        <div class="tipp">
+            <div class="iconTipp">
+                <img src="icons/Nudeln.svg" alt="">
+            </div>
+            <div class="textTipp">
+                <h1>Nudeln</h1>
+                <br>
+                <p>ipsum dolor sit amet consectetur adipisicing elit. Beatae, eaque est inventore sint, tempora vitae tenetur delectus
+                magni enim mollitia dicta animi, ea eligendi? Nulla sit velit modi repudiandae eos magni voluptate temporibus,
+                veritatis consectetur eveniet. Quae amet explicabo, ut sed consequuntur velit in ratione enim ea ipsam iste
+                molestiae?</p>
+            </div>
+        </div>
+
+        <div class="tipp">
+            <div class="iconTipp">
+                <img src="icons/Nudeln.svg" alt="">
+            </div>
+            <div class="textTipp">
+
+            </div>
+
+        </div>
+
+        <div class="tipp">
+            <div class="iconTipp">
+                <img src="icons/Nudeln.svg" alt="">
+            </div>
+            <div class="textTipp">
+
+            </div>
+        </div>
+
     </div>
 
     <div class="footer">
