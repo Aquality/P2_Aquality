@@ -1,10 +1,18 @@
 var switched = false;
+function setup() {
+    frameRate(2);
+    createCanvas(1, 1);
+}
 
 function draw() {
+    if(socket.readyState === socket.OPEN) {
+    console.log("test");
     getActualProduct();
     if(actualProduct != "nothing" && switched == false) {
+	console.log("test");
         window.location = "scanscreen.html";
         switched = true;
+    }
     }
 }
 
