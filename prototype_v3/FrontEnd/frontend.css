@@ -11,14 +11,17 @@ body {
     font-weight: lighter;
     color: white;
 }
-
+canvas {
+    position: fixed;
+    display: none;
+}
 /* --------------------------------------INDEX-SCREEN--------------------------------------- */
 a {
     color: white;
 }
 
 h1 {
-    font-size: 22pt; 
+    font-size: 2em; 
     font-weight: lighter;
 }
 /* --------------------------------------/INDEX-SCREEN-------------------------------------- */
@@ -33,11 +36,11 @@ h1 {
     width: 6vw; 
     height: 6vw; 
     background-color: rgb(4, 204, 204);
-    font-size: 30px;
+    font-size: 2em;
 }
 #minus-button:hover {
     background-color: rgb(148, 211, 66);
-    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.05), 0 17px 50px 0 rgba(0,0,0,0.05);
+    box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.05), 0 2em 6em 0 rgba(0,0,0,0.05);
 }
 
 /*Produkt-Icon-Anzeige*/
@@ -52,12 +55,12 @@ h1 {
     width: 6vw; 
     height: 6vw; 
     background-color: rgb(4, 204, 204); 
-    font-size: 30px;
+    font-size: 2em;
     color: white;
 }
 #plus-button:hover {
     background-color: rgb(255, 61, 59);
-    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.05), 0 17px 50px 0 rgba(0,0,0,0.05);
+    box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.05), 0 2em 6em 0 rgba(0,0,0,0.05);
 }
 
 /*cancelButton (Mengeneingabe des eingescannten Produktes wird abgebrochen; Produktmenge = 0)*/
@@ -66,17 +69,17 @@ h1 {
     width:5vw; 
     height:5vw; 
     background-color: rgb(4, 204, 204); 
-    font-size:20px; 
+    font-size:1.5em; 
     color: white;
 }
 #cancel:hover {
     color: rgb(99 ,99 ,99);
-    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.05), 0 17px 50px 0 rgba(0,0,0,0.05);
+    box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.05), 0 2em 6em 0 rgba(0,0,0,0.05);
 }
 
 /*Produktmengen-Anzeige*/
 #productCounter {
-    font-size:30px; 
+    font-size:1.6em; 
     color:white; 
     padding-top:2vh;
 }
@@ -87,12 +90,12 @@ h1 {
     width:5vw; 
     height:5vw; 
     background-color: rgb(4, 204, 204); 
-    font-size:20px; 
+    font-size:1.5em; 
     color:white;
 }
 #addToShoppingCart:hover {
     color: rgb(99 ,99 ,99);
-    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.05), 0 17px 50px 0 rgba(0,0,0,0.05);
+    box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.05), 0 2em 6em 0 rgba(0,0,0,0.05);
 }
 
 /*Zur Kasse (zum Ergebnisscreen, Summe aller eingescannten Produkte und Mengen)*/
@@ -103,7 +106,7 @@ h1 {
     height: 10vh; 
     background-color: rgb(4, 204, 204); 
     color: white; 
-    font-size:30px;
+    font-size:1.8em;
     position: absolute;
     bottom: 0;
 }
@@ -128,10 +131,10 @@ h1 {
     width: 8vw; 
     height: 6vw; 
     background-color: rgb(4, 204, 204);
-    font-size: 30px;
+    font-size: 2em;
 }
 #shoppingCart:hover {
-    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.05), 0 17px 50px 0 rgba(0,0,0,0.05);
+    box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.05), 0 2em 6em 0 rgba(0,0,0,0.05);
 }
 /*Warenkorb-Button ohne Hintergrund*/
 #shoppingCart2 {
@@ -139,7 +142,7 @@ h1 {
     width: 8vw; 
     height: 6vw; 
     background-color: rgb(0, 142, 138);
-    font-size: 30px;
+    font-size: 2em;
 }
 /* ----------------------------------------/WARENKORB---------------------------------------- */
 
@@ -173,7 +176,7 @@ th {
 }
 /*Produktmenge um 1 reduzieren (Tabellenspalte)*/
 .minus {
-    font-size: 20pt;
+    font-size: 1.5em;
     text-align: right;
     width: 20%;
 }
@@ -183,8 +186,8 @@ th {
 }
 /*Produktmenge um 1 erhöhen (Tabellenspalte)*/
 .plus {
-    font-size: 20pt;
-    text-alignmenge: left;
+    font-size: 1.5em;
+    text-align: left;
     width: 20%;
 }
 .plus:hover {
@@ -204,11 +207,11 @@ th {
     width: 8vw; 
     height: 6vw; 
     background-color: rgb(4, 204, 204);
-    font-size: 30px;
+    font-size: 2em;
 }
 #back:hover {
     color: rgb(99, 99, 99);
-    box-shadow: 0 6px 8px 0 rgba(0,0,0,0.05), 0 17px 50px 0 rgba(0,0,0,0.05);
+    box-shadow: 0 0.5em 1em 0 rgba(0,0,0,0.05), 0 2em 6em 0 rgba(0,0,0,0.05);
 }
 /* --------------------------------------/BACK-BUTTON--------------------------------------- */
 
