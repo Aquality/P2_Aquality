@@ -140,11 +140,11 @@ function draw() {
     document.getElementById("cancel").style.display = "none";
     document.getElementById("addToShoppingCart").style.display = "none";
     if (actualProduct != "nothing") {
-        document.getElementById("productCounter").style.display = "grid";
-        document.getElementById("plus-button").style.display = "";
-        document.getElementById("minus-button").style.display = "";
-        document.getElementById("cancel").style.display = "";
-        document.getElementById("addToShoppingCart").style.display = "";
+        document.getElementById("productCounter").style.display = "inline-block";
+        document.getElementById("plus-button").style.display = "inline-block";
+        document.getElementById("minus-button").style.display = "inline-block";
+        document.getElementById("cancel").style.display = "inline-block";
+        document.getElementById("addToShoppingCart").style.display = "inline-block";
         for (var i = 0; i < products.length; i++) {
             if (products[i].name == actualProduct) {
                 if (productCounter == 0) {
