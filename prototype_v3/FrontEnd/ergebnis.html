@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="p5/p5.min.js"></script>
     <script src="jsBackend/backend_platzhalter.js"></script>
-    <script src="js/main_ergebnis.js"></script>
+    <!-- <script src="js/main_ergebnis.js"></script> -->
     <title>AQUALITY</title>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
@@ -17,9 +17,16 @@
             margin: 0;
             display: block;
         }
+
+        video {
+            position: fixed;
+        }
     </style>
 </head>
 
 <body>
+    <video width="1920" height="1080" autoplay>
+        <source src="animation.mp4" type="video/mp4">
+    </video>
 </body>
 </html>

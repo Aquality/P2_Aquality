@@ -30,7 +30,9 @@ function draw() {
     getProducts();
     console.log("test");
     for(var i = 0; i < products.length; i++) {
+	if(document.getElementById("counter"+products[i].name) == null){
         document.getElementById("productTable").innerHTML =
+	document.getElementById("productTable").innerHTML +
         "<table>"+
             "<tr>"+
                 "<th class=\"minus\"></th>"+
@@ -53,6 +55,7 @@ function draw() {
         "</tr>"+
         "</div>"+
         "</table>"
+	}
     }
 }
 
