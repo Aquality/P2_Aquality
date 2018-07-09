@@ -87,16 +87,16 @@ function lockScann() {
 
 function scanProduct() {
 
-    if(backendActualProduct != "Tomate" && locked == false) {
+    if(backendActualProduct != "Mais" && locked == false) {
         lockScann();
-        backendActualProduct = "Tomate";
-        console.log("TOMATE EINGESCANNT");
+        backendActualProduct = "Mais";
+        console.log("Mais EINGESCANNT");
         for(var i = 0; i <= backendProducts.length; i++) {
 
             if(i == backendProducts.length) {
-                backendProducts.push(new Product("Tomate", 0, 150, 4));
+                backendProducts.push(new Product("Mais", 1, 150, 1));
                 break;
-            } else if(backendProducts[i].name == "Tomate") {
+            } else if(backendProducts[i].name == "Mais") {
                 break;
             }
         }
