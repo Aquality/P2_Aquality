@@ -20,11 +20,12 @@ from operator import itemgetter, attrgetter
 #==============================================================================================================
 
 class Food:
-    def __init__(self, name, count, water, startCount):
+    def __init__(self, name, count, water, startCount, tip):
         self.name = name
         self.count = count
         self.water = water
         self.startCount = startCount
+        self.tip = tip
 
 #==============================================================================================================
 #=== Initialisierung ===
@@ -105,7 +106,7 @@ class InputReader(threading.Thread):
                     actualName = data[1]
                     if actualName not in productNameList:
                         productNameList.append(actualName)
-                        products.append(Food(data[1], 0, data[6], data[7]))
+                        products.append(Food(data[1], 0, data[6], data[7], data[8]))
                     
                     #Setzt das zuletzt eingescannte Produkt als actualProduct
                     actualProduct = actualName
@@ -207,7 +208,7 @@ async def backendSocket(websocket, path):
 
                 #verarbeitet den SQL Eintrag, und schreibt ihn in das Products-Array
                 if data:
-                    products.append(Food(data[1], actualCount, data[6], data[7]))
+                    products.append(Food(data[1], actualCount, data[6], data[7], data[8]))
             
             #erhoeht die Anzahl des jeweiligen Produkts um die angegebene Zahl
 
@@ -399,6 +400,7 @@ async def backendSocket(websocket, path):
             width: 30%;
             margin:0 auto;
             padding: 5%;
+            margin-right: 5%;
         }
 
         .iconTipp img {
@@ -409,8 +411,10 @@ async def backendSocket(websocket, path):
         .textTipp {
             font-size: 12pt;
             padding: 4%;
+            line-height:15pt;
 
         }
+        
     </style>
 </head>
 
@@ -464,28 +468,28 @@ async def backendSocket(websocket, path):
     """)
 
                 for product in worseProducts:
-                    outfile.write("""
-                        <div class=\"tipp\">
-                            <div class=\"iconTipp\">
-                    """)
+                    if product.tip != "":
+                        outfile.write("""
+                            <div class=\"tipp\">
+                                <div class=\"iconTipp\">
+                        """)
 
-                    outfile.write("<img src=\"icons/Nudeln.svg\" alt=\"\">")
+                        outfile.write("<img src=\"icons/" + str(product.name) + ".svg\" alt=\"\">")
 
-                    outfile.write("""
+                        outfile.write("""
+                            </div>
+                                <div class=\"textTipp\">
+                        """)
+
+                        outfile.write("<h1>" + str(product.name) + "</h1>")
+                        outfile.write("<br>")
+                        outfile.write("<h2>" + str(product.water) + " Liter / Stk.</h2>")
+                        outfile.write("<br>")
+                        outfile.write("<p>" + str(product.tip) + "</p>")
+                        outfile.write("""
+                            </div>
                         </div>
-                            <div class=\"textTipp\">
-                    """)
-
-                    outfile.write("<h1>Nudeln</h1>")
-                    outfile.write("<br>")
-                    outfile.write("""<p>ipsum dolor sit amet consectetur adipisicing elit. Beatae, eaque est inventore sint, tempora vitae tenetur delectus
-                            magni enim mollitia dicta animi, ea eligendi? Nulla sit velit modi repudiandae eos magni voluptate temporibus,
-                            veritatis consectetur eveniet. Quae amet explicabo, ut sed consequuntur velit in ratione enim ea ipsam iste
-                            molestiae?</p>""")
-                    outfile.write("""
-                        </div>
-                    </div>
-                    """)
+                        """)
 
                 outfile.write("""
             <div class=\"footer\">
