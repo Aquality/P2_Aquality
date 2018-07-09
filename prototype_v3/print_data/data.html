@@ -8,10 +8,12 @@
     <title>AQUALITY</title>
     <meta charset="UTF-8" />
     <style>
-        *{
+        * {
             padding: 0;
             margin: 0;
+            font-family: arial, sans-serif;
         }
+
         .grid-container {
             grid-template-columns: 50vw 50vw;
             display: grid;
@@ -26,7 +28,6 @@
         }
 
         table {
-            font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
@@ -41,12 +42,8 @@
             border-bottom: 1px solid black;
         }
 
-        tr:nth-child(even) {
-            /*background-color: #dddddd;*/
-        }
-         
         p {
-            font-size:10pt;
+            font-size: 10pt;
         }
 
         #logo {
@@ -62,6 +59,7 @@
         .productTable {
             margin: 0 auto;
             width: 80%;
+            margin-bottom: 5%;
         }
 
         .right {
@@ -88,6 +86,7 @@
 
         .ergebnis {
             border-top: 1px solid black;
+            padding-top: 3%;
 
         }
 
@@ -96,16 +95,42 @@
             padding: 2%;
         }
 
-        .footer{
+        .footer {
             position: absolute;
             bottom: 3%;
-            width:100%;
+            width: 100%;
         }
 
         .imgIcon {
-            width:65%
+            width: 65%
         }
 
+        .tipp {
+            width: 80%;
+            margin:0 auto;
+            display: grid;
+            align-content: center;
+            border: 1px solid black;
+            height: auto;
+            border-radius: 5px;
+            grid-template-columns: auto auto;
+        }
+
+        .iconTipp {
+            width: 30%;
+            padding: 5%;
+        }
+
+        .iconTipp img {
+            margin: 0 auto;
+            width: 150px;
+        }
+
+        .textTipp {
+            font-size: 12pt;
+            padding: 4%;
+
+        }
     </style>
 </head>
 
@@ -116,40 +141,78 @@
 
     <div class="productTable">
         <table>
-            <tr>
-                <th class="icon tableHeading"></th>
-                <th class="anzahl tableHeading">Anzahl</th>
-                <th class="produkt tableHeading">Produkt</th>
-                <th class="liter tableHeading">Liter</th>
-            </tr>
-                <tr><td class="icon"><img class="imgIcon" src="icons/Tomate.svg" alt=""></td><td class="anzahl">6</td><td class="produkt">Tomate</td><td class="liter">258</td></tr><tr><td class="icon"><img class="imgIcon" src="icons/Nudeln.svg" alt=""></td><td class="anzahl">3</td><td class="produkt">Nudeln</td><td class="liter">2775</td></tr><tr><td class="icon"><img class="imgIcon" src="icons/Milch.svg" alt=""></td><td class="anzahl">1</td><td class="produkt">Milch</td><td class="liter">1010</td></tr><tr><td class="icon"><img class="imgIcon" src="icons/Mais.svg" alt=""></td><td class="anzahl">3</td><td class="produkt">Mais</td><td class="liter">636</td></tr><tr><td class="icon"><img class="imgIcon" src="icons/Rind.svg" alt=""></td><td class="anzahl">4</td><td class="produkt">Rind</td><td class="liter">12348</td></tr><tr><td class="icon"><img class="imgIcon" src="icons/Huhn.svg" alt=""></td><td class="anzahl">3</td><td class="produkt">Huhn</td><td class="liter">6150</td></tr><tr><td class="icon"><img class="imgIcon" src="icons/Brot.svg" alt=""></td><td class="anzahl">2</td><td class="produkt">Brot</td><td class="liter">2940</td></tr><tr><td class="icon"><img class="imgIcon" src="icons/Shirt.svg" alt=""></td><td class="anzahl">4</td><td class="produkt">Shirt</td><td class="liter">8000</td></tr>
+                
+                <tr>
+                    <th class="icon tableHeading"></th>
+                    <th class="anzahl tableHeading">Anzahl</th>
+                    <th class="produkt tableHeading">Produkt</th>
+                    <th class="liter tableHeading">Liter</th>
+                </tr>
+                <tr><td class="icon"><img class="imgIcon" src="icons/Mais.svg" alt=""></td><td class="anzahl">2</td><td class="produkt">Mais</td><td class="liter">424</td></tr><tr><td class="icon"><img class="imgIcon" src="icons/Tomate.svg" alt=""></td><td class="anzahl">3</td><td class="produkt">Tomate</td><td class="liter">129</td></tr><tr><td class="icon"><img class="imgIcon" src="icons/Nudeln.svg" alt=""></td><td class="anzahl">5</td><td class="produkt">Nudeln</td><td class="liter">4625</td></tr><tr><td class="icon"><img class="imgIcon" src="icons/Milch.svg" alt=""></td><td class="anzahl">0</td><td class="produkt">Milch</td><td class="liter">0</td></tr>
                 <tr>
                 <td class="icon ergebnis"></td>
                 <td class="ergebnis"></td>
                 <td class="ergebnis"></td>
                 <td class="liter ergebnis">
-                <b>34117</b>
+                <b>5178</b>
                 </td>
-            </tr>
+                </tr>
 
         </table>
     </div>
+    <div class="tipps">
+    
+                        <div class="tipp">
+                            <div class="iconTipp">
+                    <img src="icons/Nudeln.svg" alt="">
+                        </div>
+                            <div class="textTipp">
+                    <h1>Nudeln</h1><br><p>ipsum dolor sit amet consectetur adipisicing elit. Beatae, eaque est inventore sint, tempora vitae tenetur delectus
+                            magni enim mollitia dicta animi, ea eligendi? Nulla sit velit modi repudiandae eos magni voluptate temporibus,
+                            veritatis consectetur eveniet. Quae amet explicabo, ut sed consequuntur velit in ratione enim ea ipsam iste
+                            molestiae?</p>
+                        </div>
+                    </div>
+                    
+                        <div class="tipp">
+                            <div class="iconTipp">
+                    <img src="icons/Nudeln.svg" alt="">
+                        </div>
+                            <div class="textTipp">
+                    <h1>Nudeln</h1><br><p>ipsum dolor sit amet consectetur adipisicing elit. Beatae, eaque est inventore sint, tempora vitae tenetur delectus
+                            magni enim mollitia dicta animi, ea eligendi? Nulla sit velit modi repudiandae eos magni voluptate temporibus,
+                            veritatis consectetur eveniet. Quae amet explicabo, ut sed consequuntur velit in ratione enim ea ipsam iste
+                            molestiae?</p>
+                        </div>
+                    </div>
+                    
+                        <div class="tipp">
+                            <div class="iconTipp">
+                    <img src="icons/Nudeln.svg" alt="">
+                        </div>
+                            <div class="textTipp">
+                    <h1>Nudeln</h1><br><p>ipsum dolor sit amet consectetur adipisicing elit. Beatae, eaque est inventore sint, tempora vitae tenetur delectus
+                            magni enim mollitia dicta animi, ea eligendi? Nulla sit velit modi repudiandae eos magni voluptate temporibus,
+                            veritatis consectetur eveniet. Quae amet explicabo, ut sed consequuntur velit in ratione enim ea ipsam iste
+                            molestiae?</p>
+                        </div>
+                    </div>
+                    
+            <div class="footer">
 
-    <div class="footer">
+                <div class="center">
+                    <img src="frame.png" alt="" style="width:100px">
 
-        <div class="center">
-            <img src="frame.png" alt="" style="width:100px">
+                </div>
+                <div class="center">
+                    <p>
+                        Projekt von: 
+                        <br>
+                        Helene Lehmann, Nicolas Martin und Alesandra Piazza
+                    </p>
+                </div>
 
-        </div>
-        <div class="center">
-            <p>
-                Projekt von: 
-                <br>
-                 Helene Lehmann, Nicolas Martin und Alesandra Piazza
-            </p>
-        </div>
-
-    </div>
-</body>
-</html>
-                
+            </div>
+        </body>
+        </html>
+                    

@@ -12,6 +12,7 @@ import pdfkit
 import asyncio
 import websockets
 import re
+from operator import itemgetter, attrgetter
 
 
 #==============================================================================================================
@@ -385,7 +386,7 @@ async def backendSocket(websocket, path):
 
         .tipp {
             width: 80%;
-            margin: 1% auto;
+            margin:1% auto;
             display: grid;
             align-content: center;
             border: 1px solid black;
@@ -414,11 +415,20 @@ async def backendSocket(websocket, path):
 
 <body>
     <div class=\"center\">
-        <img src="logo/aquality_logo_sw.svg\" alt=\"\" id=\"logo\">
+        <img src=\"logo/aquality_logo_sw.svg\" alt=\"\" id=\"logo\">
     </div>
 
     <div class=\"productTable\">
         <table>
+                """)
+                
+                outfile.write("""
+                <tr>
+                    <th class=\"icon tableHeading\"></th>
+                    <th class=\"anzahl tableHeading\">Anzahl</th>
+                    <th class=\"produkt tableHeading\">Produkt</th>
+                    <th class=\"liter tableHeading\">Liter</th>
+                </tr>
                 """)
 
                 #fuegt produkte hinzu
@@ -452,49 +462,49 @@ async def backendSocket(websocket, path):
     <div class=\"tipps\">
     """)
 
-    for product in worseProducts:
-        outfile.write("""
-            <div class=\"tipp\">
-                <div class=\"iconTipp\">
-        """)
+                for product in worseProducts:
+                    outfile.write("""
+                        <div class=\"tipp\">
+                            <div class=\"iconTipp\">
+                    """)
 
-        outfile.write("<img src=\"icons/Nudeln.svg\" alt=\"\">")
+                    outfile.write("<img src=\"icons/Nudeln.svg\" alt=\"\">")
 
-        outfile.write("""
+                    outfile.write("""
+                        </div>
+                            <div class=\"textTipp\">
+                    """)
+
+                    outfile.write("<h1>Nudeln</h1>")
+                    outfile.write("<br>")
+                    outfile.write("""<p>ipsum dolor sit amet consectetur adipisicing elit. Beatae, eaque est inventore sint, tempora vitae tenetur delectus
+                            magni enim mollitia dicta animi, ea eligendi? Nulla sit velit modi repudiandae eos magni voluptate temporibus,
+                            veritatis consectetur eveniet. Quae amet explicabo, ut sed consequuntur velit in ratione enim ea ipsam iste
+                            molestiae?</p>""")
+                    outfile.write("""
+                        </div>
+                    </div>
+                    """)
+
+                outfile.write("""
+            <div class=\"footer\">
+
+                <div class=\"center\">
+                    <img src=\"frame.png\" alt="" style=\"width:100px\">
+
+                </div>
+                <div class=\"center\">
+                    <p>
+                        Projekt von: 
+                        <br>
+                        Helene Lehmann, Nicolas Martin und Alesandra Piazza
+                    </p>
+                </div>
+
             </div>
-                <div class=\"textTipp\">
-        """)
-
-        outfile.write("<h1>Nudeln</h1>")
-        outfile.write("<br>")
-        outfile.write("""<p>ipsum dolor sit amet consectetur adipisicing elit. Beatae, eaque est inventore sint, tempora vitae tenetur delectus
-                magni enim mollitia dicta animi, ea eligendi? Nulla sit velit modi repudiandae eos magni voluptate temporibus,
-                veritatis consectetur eveniet. Quae amet explicabo, ut sed consequuntur velit in ratione enim ea ipsam iste
-                molestiae?</p>""")
-        outfile.write("""
-            </div>
-        </div>
-        """)
-
-        outfile.write("""
-    <div class=\"footer\">
-
-        <div class=\"center\">
-            <img src=\"frame.png\" alt="" style=\"width:100px\">
-
-        </div>
-        <div class=\"center\">
-            <p>
-                Projekt von: 
-                <br>
-                 Helene Lehmann, Nicolas Martin und Alesandra Piazza
-            </p>
-        </div>
-
-    </div>
-</body>
-</html>
-                """)
+        </body>
+        </html>
+                    """)
 
 #========================================================================================================
 
