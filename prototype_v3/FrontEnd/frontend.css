@@ -350,6 +350,20 @@ right:0;
 /* --------------------------------------/PRINT-SCREEN-------------------------------------- */
 
 
+/* --------------------------------------/END-SCREEN-------------------------------------- */
+#ergebnis-screen {
+    text-align: center;
+    height: 100%;
+}
+#industrie {
+    width: 90%;
+}
+#dorf {
+   width: 100%;
+ 
+}
+/* --------------------------------------/END-SCREEN-------------------------------------- */
+
 /* Screenüberschriften*/
 .title {
     width: 100%; 
@@ -390,6 +404,11 @@ right:0;
     grid-template-columns: auto auto; 
     display:grid; 
     align-content:center;    
+}
+.vier {
+    grid-template-columns: 35% 26% 39%; 
+    display: grid; 
+    align-content: center;  
 }
 /*Ausrichtung rechts*/
 .right {
