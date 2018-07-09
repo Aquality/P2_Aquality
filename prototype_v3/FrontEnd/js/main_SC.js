@@ -1,7 +1,34 @@
 function setup(){
     frameRate(2);
-    scanProduct();
+}
+
+function addButton(produkt) {
     getProducts();
+    addProduct(produkt, 1);
+    for(var i = 0; i < products.length; i++) {
+
+        if(products[i].name == produkt) {
+            document.getElementById("counter"+produkt).innerHTML = products[i].count;
+        }
+    }
+}
+
+function deleteButton(produkt) {
+    getProducts();
+    for(var i = 0; i < products.length; i++) {
+
+        if(products[i].count > 0) {
+            deleteProduct(produkt, 1);
+            if(products[i].name == produkt) {
+                document.getElementById("counter"+produkt).innerHTML = products[i].count;
+            }
+        }
+    }
+}
+
+function draw() {
+    getProducts();
+    console.log("test");
     for(var i = 0; i < products.length; i++) {
         document.getElementById("productTable").innerHTML =
         "<table>"+
@@ -27,34 +54,6 @@ function setup(){
         "</div>"+
         "</table>"
     }
-}
-
-function addButton(produkt) {
-    getProducts();
-    addProduct(produkt, 1);
-    for(var i = 0; i < products.length; i++) {
-
-        if(products[i].name == produkt) {
-            document.getElementById("counter"+produkt).innerHTML = products[i].count;
-        }
-    }
-}
-
-function deleteButton(produkt) {
-    getProducts();
-    for(var i = 0; i < products.length; i++) {
-
-        if(products[i] != undefined) {
-            deleteProduct(produkt, 1);
-            if(products[i].name == produkt) {
-                document.getElementById("counter"+produkt).innerHTML = products[i].count;
-            }
-        }
-    }
-}
-
-function draw() {
-
 }
 
 function keyPressed() {

@@ -517,7 +517,7 @@ async def backendSocket(websocket, path):
             #erstellt ein pdf aus der html datei
             pdfkit.from_file("/home/pi/Desktop/prototype_v3/print_data/data.html", "/home/pi/Desktop/prototype_v3/data.pdf")
             #sendet dem Drucker den Befehl zum Drucken
-            call(['lp', '-d', 'Epson_Stylus_SX420W', '/home/pi/Desktop/prototype_v3/data.pdf'])
+            #call(['lp', '-d', 'Epson_Stylus_SX420W', '/home/pi/Desktop/prototype_v3/data.pdf'])
 
             print("printing Bill")
 

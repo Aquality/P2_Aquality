@@ -28,6 +28,21 @@ h1 {
     font-size: 2em; 
     font-weight: lighter;
 }
+h2 {
+    font-size: 4em;
+    font-weight: lighter;
+    line-height: 180%;
+    background-color: rgb(2, 102, 102);
+}
+h3 {
+    padding-top: 2%;
+    font-size: 2em;
+    font-weight: lighter;
+    line-height: 150%;
+}
+b {
+    color: rgb(2, 102, 102);
+}
 /* --------------------------------------/INDEX-SCREEN-------------------------------------- */
 
 
@@ -247,12 +262,25 @@ th {
 
 
 /* ---------------------------------------NEXT-BUTTON---------------------------------------- */
+.next{
+    text-align:right;
+position: absolute;
+bottom:0;
+right:0;
+}
+
 #next {
-     position: absolute;
-     bottom: 5%;
-     right: 5%;
-     font-weight: lighter;
-     font-size: 1em;
+    margin:10px;
+    font-weight: lighter;
+    text-decoration-line: none;
+    font-size: 1.5em;
+    border-radius: 10%;
+    height:5em;   
+    color: white;
+    background-color: rgb(2, 102, 102);
+    width: 6em; 
+    border: none;
+
 }
 /* --------------------------------------/NEXT-BUTTON---------------------------------------- */
 
@@ -312,10 +340,11 @@ th {
 
 /* --------------------------------------PRINT-SCREEN--------------------------------------- */
 #print-screen {
-    padding-top: 10%;
+    padding-top: 5%;
     text-align: center;
 }
 #printing {
+    padding-top: 1%;
     width:40%;
 }
 /* --------------------------------------/PRINT-SCREEN-------------------------------------- */
