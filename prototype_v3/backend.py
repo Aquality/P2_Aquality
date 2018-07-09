@@ -387,7 +387,7 @@ async def backendSocket(websocket, path):
         .tipp {
             width: 80%;
             margin:1% auto;
-            display: grid;
+            display: flex;
             align-content: center;
             border: 1px solid black;
             height: auto;
@@ -397,6 +397,7 @@ async def backendSocket(websocket, path):
 
         .iconTipp {
             width: 30%;
+            margin:0 auto;
             padding: 5%;
         }
 
@@ -438,7 +439,7 @@ async def backendSocket(websocket, path):
                     outfile.write("<td class=\"icon\"><img class=\"imgIcon\" src=\"icons/" + str(product.name) + ".svg\" alt=\"\"></td>")
                     outfile.write("<td class=\"anzahl\">" + str(product.count) + "</td>")
                     outfile.write("<td class=\"produkt\">" + str(product.name) + "</td>")
-                    outfile.write("<td class=\"liter\">" + str(product.count * product.water) + "</td>")
+                    outfile.write("<td class=\"liter\">" + str(product.count * product.water) + " l</td>")
                     outfile.write("</tr>")
 
                 #gesamter wasserverbrauch
@@ -451,7 +452,7 @@ async def backendSocket(websocket, path):
                 <td class=\"liter ergebnis\">
                 """)
 
-                outfile.write("<b>" + str(totalWater) + "</b>")
+                outfile.write("<b>" + str(totalWater) + " l</b>")
 
                 outfile.write("""
                 </td>
