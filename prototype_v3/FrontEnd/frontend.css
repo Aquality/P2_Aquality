@@ -203,13 +203,14 @@ padding-top: 5vh;
 /* --------------------------------------WARENKORBLISTE-------------------------------------- */
 /*Warenkorb-Liste (Tabelle)*/
 table {
+
     text-align: center;
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 td {
-    padding: 20px;
+    padding: 5px;
 }
 th {
     padding: 5px;
@@ -351,16 +352,19 @@ right:0;
 
 
 /* --------------------------------------/END-SCREEN-------------------------------------- */
-#ergebnis-screen {
+#end-screen {
     text-align: center;
     height: 100%;
+
 }
 #industrie {
-    width: 90%;
+    width: 80%;
+    
 }
 #dorf {
-   width: 100%;
- 
+
+   width: 90%;
+   padding-left: 5%;
 }
 /* --------------------------------------/END-SCREEN-------------------------------------- */
 
@@ -409,6 +413,8 @@ right:0;
     grid-template-columns: 35% 26% 39%; 
     display: grid; 
     align-content: center;  
+    margin-top: 3%;
+
 }
 /*Ausrichtung rechts*/
 .right {

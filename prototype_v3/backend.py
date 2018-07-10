@@ -329,7 +329,7 @@ async def backendSocket(websocket, path):
         #logo {
             width: 200px;
             padding-top: 5%;
-            padding-bottom: 10%;
+           
         }
 
         .center {
@@ -375,10 +375,9 @@ async def backendSocket(websocket, path):
             padding: 2%;
         }
 
-        .footer {
-            position: absolute;
-            bottom: 3%;
+        .header {
             width: 100%;
+             padding-bottom: 2%;
         }
 
         .imgIcon {
@@ -414,13 +413,25 @@ async def backendSocket(websocket, path):
             line-height:15pt;
 
         }
+       
+        .group{
+           padding-top:2%;
+        }
         
     </style>
 </head>
 
 <body>
-    <div class=\"center\">
+ 
+    <div class=\"center header\">
         <img src=\"logo/aquality_logo_sw.svg\" alt=\"\" id=\"logo\">
+  <p class="group">
+                        Alles zum Projekt: 
+                       </p>
+             <div>
+                    <img src=\"frame.png\" alt="" style=\"width:70px\">
+</div>
+                    
     </div>
 
     <div class=\"productTable\">
@@ -492,22 +503,8 @@ async def backendSocket(websocket, path):
                         """)
 
                 outfile.write("""
-            <div class=\"footer\">
-
-                <div class=\"center\">
-                    <img src=\"frame.png\" alt="" style=\"width:100px\">
-
-                </div>
-                <div class=\"center\">
-                    <p>
-                        Projekt von: 
-                        <br>
-                        Helene Lehmann, Nicolas Martin und Alesandra Piazza
-                    </p>
-                </div>
-
-            </div>
-        </body>
+                        
+             </body>
         </html>
                     """)
 

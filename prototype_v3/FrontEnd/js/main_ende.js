@@ -20,7 +20,7 @@ function deleteButton(produkt) {
 
 function draw() {
     getProducts();
-
+    getTotalWater();
     for(var i = 0; i < products.length; i++) {
 
 	if(document.getElementById("counter"+products[i].name) == null){
@@ -52,6 +52,37 @@ function draw() {
 
 	}
 	document.getElementById("counter"+products[i].name).innerHTML = products[i].count;
+    }
+
+    document.getElementById("bodyCount").innerHTML = 
+        "... nimmst du einem Menschen "+
+        Math.round(totalWater / 1.5 ) +
+        " Tage das Trinkwasser weg.";
+
+    if(totalWater < 100) {
+        console.log("test");
+        document.getElementById("dorfImg").src = "dorf-screens/svg/Stufe 1.svg";
+        document.getElementById("industrieImg").src = "industrie-screens/svg/Stufe 5.svg";
+    }
+    else if(totalWater < 500) {
+        console.log("test");
+        document.getElementById("dorfImg").src = "dorf-screens/svg/Stufe 2.svg";
+        document.getElementById("industrieImg").src = "industrie-screens/svg/Stufe 4.svg";
+    }
+    else if(totalWater < 2000) {
+        console.log("test");
+        document.getElementById("dorfImg").src = "dorf-screens/svg/Stufe 3.svg";
+        document.getElementById("industrieImg").src = "industrie-screens/svg/Stufe 3.svg";
+    }
+    else if(totalWater < 10000) {
+        console.log("test");
+        document.getElementById("dorfImg").src = "dorf-screens/svg/Stufe 4.svg";
+        document.getElementById("industrieImg").src = "industrie-screens/svg/Stufe 2.svg";
+    }
+    else if(totalWater < 20000) {
+        console.log("test");
+        document.getElementById("dorfImg").src = "dorf-screens/svg/Stufe 5.svg";
+        document.getElementById("industrieImg").src = "industrie-screens/svg/Stufe 1.svg";
     }
 }
 
