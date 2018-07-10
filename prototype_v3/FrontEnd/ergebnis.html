@@ -6,12 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="p5/p5.min.js"></script>
     <script src="jsBackend/backend_platzhalter.js"></script>
+    <script src="js/main_ergebnis.js"></script>
     <!-- <script src="js/main_ergebnis.js"></script> -->
     <title>AQUALITY</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <link href="frontend.css" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+
+        }
         canvas {
             padding: 0;
             margin: 0;
@@ -20,13 +26,28 @@
 
         video {
             position: fixed;
+            z-index: -1;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 250px;
+            font-size: 8em;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 6em;
+            opacity: 0.0;
         }
     </style>
 </head>
 
 <body>
-    <video width="1920" height="1080" autoplay>
+    <video id="video" width="1920" height="1080" autoplay>
         <source src="animation.mp4" type="video/mp4">
     </video>
+    <h1 id="waterCount">2000l</h1>
+    <h2 id="satz">Tage ohne Trinkwasser</h2>
 </body>
 </html>
