@@ -148,7 +148,15 @@ inputReaderThread.start()
 #==============================================================================================================
 
 async def backendSocket(websocket, path):
-
+    global productNameList
+    global products
+    global totalWater
+    global actualProduct
+    global jsonString
+    global jsonData
+    global locked
+    global sendProductsArray
+    global worseProducts
 
     global actualProduct
     global jsonString
@@ -429,7 +437,7 @@ async def backendSocket(websocket, path):
                         Alles zum Projekt: 
                        </p>
              <div>
-                    <img src=\"frame.png\" alt="" style=\"width:70px\">
+                    <img src=\"frame.png\" alt="" style=\"width:100px\">
 </div>
                     
     </div>
@@ -514,12 +522,21 @@ async def backendSocket(websocket, path):
             #erstellt ein pdf aus der html datei
             pdfkit.from_file("/home/pi/Desktop/prototype_v3/print_data/data.html", "/home/pi/Desktop/prototype_v3/data.pdf")
             #sendet dem Drucker den Befehl zum Drucken
-            #call(['lp', '-d', 'Epson_Stylus_SX420W', '/home/pi/Desktop/prototype_v3/data.pdf'])
+            call(['lp', '-d', 'Epson_Stylus_SX420W', '/home/pi/Desktop/prototype_v3/data.pdf'])
 
             print("printing Bill")
 
         elif value == "resetBackend":
-            print("Backend wurde resettet")
+            productNameList = []
+            products = []
+            totalWater = 0
+            actualProduct= "nothing"
+            jsonString = ""
+            jsonData = []
+            locked = False
+            sendProductsArray = False
+            worseProducts = []
+            print(products)
 
 
         else:

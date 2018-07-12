@@ -9,7 +9,7 @@ totalWater = 100;
 days = totalWater / 1.5;
 
 function setup() {
-    frameRate(30);
+    frameRate(15);
     document.getElementById('video').addEventListener('ended',myHandler,false);
     
 }
@@ -20,7 +20,7 @@ function draw() {
     document.getElementById("waterCount").innerHTML = Math.round(counter);
 
     if(counter < days) {
-        counter += days / 300;
+        counter += days / 50;
     } else {
         counter = days;
         if(x < 60) {

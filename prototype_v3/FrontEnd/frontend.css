@@ -43,6 +43,28 @@ h3 {
 b {
     color: rgb(2, 102, 102);
 }
+.title {
+    width: 100%; 
+    text-align: center;
+}
+#logo {
+    padding-top: 3%;
+    text-align: center; 
+    width: auto;
+    height: 45vh;
+}
+
+#howto {
+    padding-top: 5%;
+    text-align: center;
+}
+#start {
+    padding-top: 0%;
+    width:20%;
+}
+#start-screen {
+   
+}
 /* --------------------------------------/INDEX-SCREEN-------------------------------------- */
 
 
@@ -286,6 +308,23 @@ right:0;
 /* --------------------------------------/NEXT-BUTTON---------------------------------------- */
 
 
+/* ---------------------------------------RESET-BUTTON--------------------------------------- */
+
+#reset {
+    margin:10px;
+    font-weight: lighter;
+    text-decoration-line: none;
+    font-size: 1.5em;
+    border-radius: 10%;
+    height:5em;   
+    color: white;
+    background-color: rgb(2, 102, 102);
+    width: 6em; 
+    border: none;
+
+}
+/* --------------------------------------/RESET-BUTTON--------------------------------------- */
+
 /* ------------------------------------------LOADER------------------------------------------ */
 .loader {
     border: 0.5em solid white; /* Light grey */
@@ -345,7 +384,7 @@ right:0;
     text-align: center;
 }
 #printing {
-    padding-top: 1%;
+    padding-top: 5%;
     width:40%;
 }
 /* --------------------------------------/PRINT-SCREEN-------------------------------------- */
@@ -369,20 +408,7 @@ right:0;
 /* --------------------------------------/END-SCREEN-------------------------------------- */
 
 /* Screenüberschriften*/
-.title {
-    width: 100%; 
-    text-align: center;
-}
-#logo {
-    padding-top: 5%;
-    text-align: center; 
-    width: auto;
-    height: 45vh;
-}
-#animation {
-    text-align: center;
-    padding-top: 10vh;
-}
+
 /*Absatz, damit Buttons auf dem Scanscreena in der Mitte sind*/
 .absatz {
     font-size: 12vh; 
