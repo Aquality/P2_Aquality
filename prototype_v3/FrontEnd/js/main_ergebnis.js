@@ -6,8 +6,6 @@ var counter = 0;
 
 totalWater = 100;
 
-days = totalWater / 1.5;
-
 function setup() {
     frameRate(15);
     document.getElementById('video').addEventListener('ended',myHandler,false);

@@ -55,9 +55,9 @@ function draw() {
     }
 
     document.getElementById("bodyCount").innerHTML = 
-        "... nimmst du einem Menschen "+
+        "... nimmst du einem Menschen <span style=\"color: rgb(255, 61, 59); font-size:2em;\">"+
         Math.round(totalWater / 1.5 ) +
-        " Tage das Trinkwasser weg.";
+        "</span> Tage das Trinkwasser weg.";
 
     if(totalWater < 100) {
         console.log("test");
